@@ -1,0 +1,741 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.IO;
+using Newtonsoft.Json;
+using System.Text;
+using System.Security.Cryptography;
+using GameRecord.Models;
+using System.Data.Entity.Migrations;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using System.Configuration;
+using System.Data.Entity.Validation;
+
+namespace GameRecord.Controllers
+{
+	public class BGController : Controller
+	{
+		public static readonly object MyLock = new object();
+		private string P_ApiUrl = "http://n1api.linirn.com/open-cloud/api/";
+		private string P_ApiUrl1 = "http://n1api.trarot.com/open-cloud/api/"; //use this is first one got problem
+		private string P_SecretKey = "4AB268FD607445B98C0ABB5110403237";
+		//private string P_AgentId = "fa08btagent";
+		//private string P_AgentPwd = "0524Bt0524";
+		private string P_sn = "bj09";
+		private string P_GamePrefix = "BG";
+		private string P_NamePrefix = "BGC";
+
+		Common _common = new Common();
+
+		//##########################################################################################################################
+		#region Function
+
+		//Encrypt the data - Key to lower, Concat random+sn+secretKey 
+		public string digestMD5Key(string random)
+		{
+			string text = random + P_sn + P_SecretKey;
+
+			byte[] ba = System.Security.Cryptography.MD5.Create().ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(text));
+			string hex = BitConverter.ToString(ba);
+			hex = hex.Replace("-", "");
+
+			return hex;
+		}
+
+		public string GetJobTime(string action)
+		{
+			try
+			{
+				string sTime = "";
+				using (var bingoConn = new BingoConn())
+				{
+					var query = bingoConn.ADMJobDates
+						.Where(s => s.GameProvider == P_GamePrefix)
+						.FirstOrDefault();
+
+					if (action == "Start")
+					{
+						DateTime dtSTime = Convert.ToDateTime(query.LastRunTillDate?.ToString("yyyy-MM-dd HH:mm"));
+						sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+					}
+					else
+					{
+						DateTime dtSTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm")) - new TimeSpan(0, 12, 3, 0, 0);
+						sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+					}
+
+					//if (action == "Start")
+					//{
+					//	DateTime dtSTime = Convert.ToDateTime(query.LastRunTillDate);
+					//	sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+					//}
+					//else
+					//{
+					//	DateTime dtSTime = DateTime.Now - new TimeSpan(0, 12, 3, 0);
+					//	sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+					//}
+				}
+				return sTime;
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/GetJobTime" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return "Error:" + ex.Message.ToString();
+			}
+		}
+
+		//public string GetJobTime(string action)
+		//{
+		//    try
+		//    {
+		//        string sTime = "";
+		//        using (var bingoConn = new BingoConn())
+		//        {
+		//            var query = bingoConn.ADMJobDates
+		//                                .Where(s => s.GameProvider == P_GamePrefix)
+		//                                .FirstOrDefault();
+
+		//            if (action == "Start")
+		//            {
+		//                DateTime dtSTime = Convert.ToDateTime(query.JobStart);
+		//                sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+		//            }
+		//            else
+		//            {
+		//                DateTime dtSTime = Convert.ToDateTime(query.JobEnd);
+		//                sTime = dtSTime.ToString("yyyy-MM-dd HH:mm:ss");
+		//            }
+		//        }
+		//        return sTime;
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        _common.LogError("BG/GetJobTime" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+		//        return "Error:" + ex.Message.ToString();
+		//    }
+		//}
+
+		#endregion
+
+		//##########################################################################################################################
+		#region  Declaration
+
+		public string ErrorMessage
+		{
+			get
+			{
+				return p_ErrorMessage;
+			}
+		}
+		private string p_ErrorMessage;
+
+		public class GameLogVM
+		{
+			public GameLogResultVM result { get; set; }
+			public string id { get; set; }
+			public string error { get; set; }
+			public string jsonrpc { get; set; }
+		}
+
+		public class GameLogResultVM
+		{
+			public List<GameLogItemVM> items { get; set; }
+			public int total { get; set; }
+			public int pageIndex { get; set; }
+			public int pageSize { get; set; }
+			public string etag { get; set; }
+		}
+
+		public class GameLogItemVM
+		{
+			public long orderId { get; set; }
+			//public long tranId { get; set; }
+			public string sn { get; set; }
+			public long uid { get; set; }
+			public string loginId { get; set; }
+			public int moduleId { get; set; }
+			public string moduleName { get; set; }
+			public int gameId { get; set; }
+			public string gameName { get; set; }
+			public int orderStatus { get; set; }
+			public float bAmount { get; set; }
+			public float aAmount { get; set; }
+			public int orderFrom { get; set; }
+			public DateTime orderTime { get; set; }
+			public DateTime lastUpdateTime { get; set; }
+			public string playId { get; set; }
+			public string fromIp { get; set; }
+			public string issueId { get; set; }
+			public string playName { get; set; }
+			public string playNameEn { get; set; }
+			public float validBet { get; set; }
+			public float payment { get; set; }
+			public string betContent { get; set; }
+			public int noComm { get; set; }
+		}
+
+		#endregion
+
+		//###################################################################################
+		#region Main function 
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		public bool GetGameRecord()
+		{
+			try
+			{
+				string startTime = GetJobTime("Start");
+				string endTime = GetJobTime("End");
+
+				string method = "open.order.query";
+				string webAddr = P_ApiUrl + "/" + method;
+				string random = P_GamePrefix + Guid.NewGuid().ToString();
+				string sign = digestMD5Key(random);
+				string srpc = "2.0";
+				int pageSize = 500;
+
+				var httpWebRequest = (HttpWebRequest)WebRequest.Create(webAddr);
+				httpWebRequest.ContentType = "application/json";
+				httpWebRequest.Method = "POST";
+				httpWebRequest.Timeout = 60000;
+				httpWebRequest.ReadWriteTimeout = 60000;
+
+				string json = "";
+				using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+				{
+					json = "{ \"id\" : \"" + random +
+								"\", \"method\" : \"" + method +
+							"\" , \"params\" : { \"random\" : \"" + random + "\" , \"sign\" : \"" + sign + "\" , \"sn\" : \"" + P_sn + "\" , \"startTime\" : \"" + startTime + "\", \"endTime\" : \"" + endTime + "\", \"pageSize\" : \"" + pageSize + "\" }" +
+							", \"jsonrpc\" : \"" + srpc + "\"} ";
+					//string json = "{ \"id\" : \"" + random +
+					//                "\", \"method\" : \"" + method +
+					//                "\" , \"params\" : { \"random\" : \"" + random + "\" , \"sign\" : \"" + sign + "\" , \"sn\" : \"" + P_sn + "\" , \"loginIds\" : " + sJSONResponse + ", \"startTime\" : \"" + startTime + "\", \"endTime\" : \"" + endTime + "\", \"pageSize\" : \"" + pageSize + "\" }" +
+					//                ", \"jsonrpc\" : \"" + srpc + "\"} ";
+
+
+					streamWriter.Write(json);
+					streamWriter.Flush();
+				}
+
+				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+				using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+				{
+					var responseText = streamReader.ReadToEnd();
+
+					GameLogVM result = JsonConvert.DeserializeObject<GameLogVM>(responseText);
+					string sMainID = Guid.NewGuid().ToString();
+
+					using (BingoConn db = new BingoConn())
+					{
+						//Insert Main table
+						BGGameMain bGGameMain = new BGGameMain()
+						{
+							Id = sMainID,
+							random = result.id,
+							error = result.error,
+							total = result.result.total,
+							pageIndex = result.result.pageIndex,
+							pageSize = result.result.pageSize,
+							startTime = Convert.ToDateTime(startTime),
+							endTime = Convert.ToDateTime(endTime),
+							CreatedDate = DateTime.Now
+						};
+						db.BGGameMains.Add(bGGameMain);
+						db.SaveChanges();
+
+						//Insert Result table
+						foreach (var p in result.result.items)
+						{
+							try
+							{
+								if (p.loginId.ToUpper().Trim().StartsWith(P_NamePrefix))
+								{
+									var bggame = db.BGGames.Where(x => x.orderId == p.orderId).FirstOrDefault();
+									if (bggame == null)
+									{
+										var bGGame = new BGGame()
+										{
+											fId = sMainID,
+											orderId = p.orderId,
+											sn = p.sn,
+											uid = p.uid,
+											loginId = p.loginId,
+											moduleId = p.moduleId,
+											gameId = p.gameId,
+											gameName = p.gameName,
+											orderStatus = p.orderStatus,
+											bAmount = p.bAmount,
+											aAmount = p.aAmount,
+											orderFrom = p.orderFrom,
+											orderTime = p.orderTime,
+											lastUpdateTime = p.lastUpdateTime,
+											fromIp = p.fromIp,
+											issueId = p.issueId,
+											playId = p.playId,
+											playName = p.playName,
+											playNameEn = p.playNameEn,
+											validBet = p.validBet,
+											payment = p.payment,
+											Total = Convert.ToInt32(result.result.total),
+											CreatedDate = DateTime.Now,
+											betContent = p.betContent,
+											noComm = p.noComm
+										};
+										db.BGGames.AddOrUpdate(bGGame);
+									}
+								}
+							}
+							catch (Exception ex)
+							{
+								_common.LogError("Record " + p.orderId + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+							}
+						}
+
+						db.SaveChanges();
+					}
+
+					//If record more than 500, need to get the record from Page 2 and above
+					decimal dCnt = Convert.ToDecimal(result.result.total) / Convert.ToDecimal(500);
+					int iPageIndex = Int32.Parse(Math.Ceiling(dCnt).ToString());
+
+					if (iPageIndex > 1)
+					{
+						for (int x = 2; x <= iPageIndex; x++)
+						{
+							bool IsOK = GetGameRecordExtend(x);
+						}
+					}
+
+					bool isUpdJob = UpdJobTime(startTime, endTime, sMainID);
+
+					return true;
+
+					//json format display
+					//string json = JsonConvert.SerializeObject(result);
+					//string jsonFormatted = Newtonsoft.Json.Linq.JValue.Parse(json).ToString(Formatting.Indented);
+				}
+			}
+			catch (DbEntityValidationException e)
+			{
+				foreach (var eve in e.EntityValidationErrors)
+				{
+					_common.LogError("BG/GetGameRecord" + " " + DateTime.Now.ToString() + " " + string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+							eve.Entry.Entity.GetType().Name, eve.Entry.State), "BG");
+					foreach (var ve in eve.ValidationErrors)
+					{
+						_common.LogError("BG/GetGameRecord" + " " + DateTime.Now.ToString() + " " + string.Format("- Property: \"{0}\", Error: \"{1}\"",
+								ve.PropertyName, ve.ErrorMessage), "BG");
+					}
+				}
+				return false;
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/GetGameRecord" + " " + DateTime.Now.ToString() + " " + ex.Message.ToString(), "BG");
+				return false;
+			}
+			//return "OK";
+		}
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		public bool GetGameRecordExtend(int pageIndex)
+		{
+			string startTime = GetJobTime("Start");
+			string endTime = GetJobTime("End");
+			string sMainID = Guid.NewGuid().ToString();
+
+			try
+			{
+				string method = "open.order.query";
+				string webAddr = P_ApiUrl + "/" + method;
+				string random = P_GamePrefix + Guid.NewGuid().ToString();
+				string sign = digestMD5Key(random);
+				string srpc = "2.0";
+				int pageSize = 500;
+
+				var httpWebRequest = (HttpWebRequest)WebRequest.Create(webAddr);
+				httpWebRequest.ContentType = "application/json";
+				httpWebRequest.Method = "POST";
+				httpWebRequest.Timeout = 60000;
+				httpWebRequest.ReadWriteTimeout = 60000;
+
+				using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+				{
+					string json = "{ \"id\" : \"" + random +
+													"\", \"method\" : \"" + method +
+													"\" , \"params\" : { \"random\" : \"" + random + "\" , \"sign\" : \"" + sign + "\" , \"sn\" : \"" + P_sn + "\" , \"startTime\" : \"" + startTime + "\", \"endTime\" : \"" + endTime + "\", \"pageSize\" : \"" + pageSize + "\", \"pageIndex\" : \"" + pageIndex + "\" }" +
+													", \"jsonrpc\" : \"" + srpc + "\"} ";
+
+					streamWriter.Write(json);
+					streamWriter.Flush();
+				}
+				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+				using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+				{
+					var responseText = streamReader.ReadToEnd();
+
+					GameLogVM result = JsonConvert.DeserializeObject<GameLogVM>(responseText);
+
+					using (BingoConn db = new BingoConn())
+					{
+						//Insert Main table
+						BGGameMain bGGameMain = new BGGameMain()
+						{
+							Id = sMainID,
+							random = result.id,
+							error = result.error,
+							total = result.result.total,
+							pageIndex = result.result.pageIndex,
+							pageSize = result.result.pageSize,
+							startTime = Convert.ToDateTime(startTime),
+							endTime = Convert.ToDateTime(endTime),
+							CreatedDate = DateTime.Now
+						};
+						db.BGGameMains.Add(bGGameMain);
+						db.SaveChanges();
+
+						//Insert Result table
+						foreach (var p in result.result.items)
+						{
+							try
+							{
+								if (p.loginId.ToUpper().Trim().StartsWith(P_NamePrefix))
+								{
+									var bggame = db.BGGames.Where(x => x.orderId == p.orderId).FirstOrDefault();
+									if (bggame == null)
+									{
+										var bGGame = new BGGame()
+										{
+											fId = sMainID,
+											orderId = p.orderId,
+											sn = p.sn,
+											uid = p.uid,
+											loginId = p.loginId,
+											moduleId = p.moduleId,
+											gameId = p.gameId,
+											gameName = p.gameName,
+											orderStatus = p.orderStatus,
+											bAmount = p.bAmount,
+											aAmount = p.aAmount,
+											orderFrom = p.orderFrom,
+											orderTime = p.orderTime,
+											lastUpdateTime = p.lastUpdateTime,
+											fromIp = p.fromIp,
+											issueId = p.issueId,
+											playId = p.playId,
+											playName = p.playName,
+											playNameEn = p.playNameEn,
+											validBet = p.validBet,
+											payment = p.payment,
+											CreatedDate = DateTime.Now,
+											betContent = p.betContent,
+											noComm = p.noComm
+										};
+										db.BGGames.AddOrUpdate(bGGame);
+									}
+								}
+							}
+							catch (Exception ex)
+							{
+								_common.LogError("Record " + p.orderId + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+							}
+
+						}
+						db.SaveChanges();
+					}
+
+					return true;
+				}
+			}
+			catch (DbEntityValidationException e)
+			{
+				foreach (var eve in e.EntityValidationErrors)
+				{
+					_common.LogError("BG/GetGameRecordExtend" + " " + DateTime.Now.ToString() + "  " + string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+							eve.Entry.Entity.GetType().Name, eve.Entry.State), "BG");
+					foreach (var ve in eve.ValidationErrors)
+					{
+						_common.LogError("BG/GetGameRecordExtend" + " " + DateTime.Now.ToString() + "  " + string.Format("- Property: \"{0}\", Error: \"{1}\"",
+								ve.PropertyName, ve.ErrorMessage), "BG");
+					}
+				}
+				return false;
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/GetGameRecordExtend" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return false;
+			}
+		}
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		public bool UpdGameRecord(string startTime, string endTime, long orderId)
+		{
+			try
+			{
+				string method = "open.order.query";
+				string webAddr = P_ApiUrl + "/" + method;
+				string random = P_GamePrefix + Guid.NewGuid().ToString();
+				string sign = digestMD5Key(random);
+				string srpc = "2.0";
+				int pageSize = 500;
+
+				var httpWebRequest = (HttpWebRequest)WebRequest.Create(webAddr);
+				httpWebRequest.ContentType = "application/json";
+				httpWebRequest.Method = "POST";
+				httpWebRequest.Timeout = 60000;
+				httpWebRequest.ReadWriteTimeout = 60000;
+
+				using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+				{
+					string json = "{ \"id\" : \"" + random +
+													"\", \"method\" : \"" + method +
+													"\" , \"params\" : { \"random\" : \"" + random + "\" , \"sign\" : \"" + sign + "\" , \"sn\" : \"" + P_sn + "\", \"startTime\" : \"" + startTime + "\", \"endTime\" : \"" + endTime + "\" , \"pageSize\" : " + pageSize + ", \"orderId\" : " + orderId + " }" +
+													", \"jsonrpc\" : \"" + srpc + "\"} ";
+
+					streamWriter.Write(json);
+					streamWriter.Flush();
+				}
+
+				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+				using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+				{
+					var responseText = streamReader.ReadToEnd();
+
+					GameLogVM result = JsonConvert.DeserializeObject<GameLogVM>(responseText);
+
+					using (BingoConn db = new BingoConn())
+					{
+						foreach (var p in result.result.items)
+						{
+							var xyz = db.BGGames.Where(x => x.orderId == p.orderId).FirstOrDefault();
+							if (xyz != null)
+							{
+								xyz.orderStatus = p.orderStatus;
+								xyz.bAmount = p.bAmount;
+								xyz.aAmount = p.aAmount;
+								xyz.orderTime = p.orderTime;
+								xyz.lastUpdateTime = p.lastUpdateTime;
+								xyz.fromIp = p.fromIp;
+								xyz.validBet = p.validBet;
+								xyz.payment = p.payment;
+								xyz.ModifiedDate = DateTime.Now;
+
+								db.Entry(xyz).State = System.Data.Entity.EntityState.Modified;
+								db.SaveChanges();
+							}
+						}
+
+					}
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/UpdGameRecord" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return false;
+			}
+		}
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		public bool GetPending()
+		{
+			try
+			{
+				using (var bingoConn = new BingoConn())
+				{
+					var query = bingoConn.BGGames
+															.Where(s => s.orderStatus == 1)
+															.ToList();
+
+					if (query != null)
+					{
+						string sID = Guid.NewGuid().ToString();
+
+						BGGameMain bGGameMain = new BGGameMain()
+						{
+							Id = sID,
+							error = "GetPending",
+							total = query.Count,
+							CreatedDate = DateTime.Now
+						};
+						bingoConn.BGGameMains.Add(bGGameMain);
+						bingoConn.SaveChanges();
+
+						foreach (var x in query)
+						{
+							DateTime dtSTime = Convert.ToDateTime(x.orderTime);
+							string sTime = dtSTime.ToString("yyyy-MM-dd hh:mm:ss");
+
+							bool isUpdOK = UpdGameRecord(sTime, sTime, Convert.ToInt64(x.orderId.ToString()));
+						}
+					}
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/GetPending" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return false;
+			}
+		}
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		public bool UpdJobTime(string startTime, string endTime, string fId)
+		{
+			try
+			{
+				//DateTime dtStart = Convert.ToDateTime(startTime);
+				DateTime dtEnd = Convert.ToDateTime(endTime);
+
+				using (var bingoConn = new BingoConn())
+				{
+					var xyz = bingoConn.ADMJobDates.Where(s => s.GameProvider == P_GamePrefix).FirstOrDefault();
+					if (xyz != null)
+					{
+						//int iInterval = Convert.ToInt32(xyz.Interval);
+
+						//DateTime dtStartAdd = dtStart.AddMinutes(iInterval);
+						//DateTime dtEndAdd = dtEnd.AddMinutes(iInterval);
+						//xyz.JobStart = dtStartAdd;
+						//xyz.JobEnd = dtEndAdd;
+
+						xyz.LastRunTillDate = dtEnd;
+
+						//bingoConn.Entry(xyz).State = System.Data.Entity.EntityState.Modified;
+						bingoConn.SaveChanges();
+					}
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("BG/UpdJobTime" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return false;
+			}
+		}
+
+		//public bool GetGameRecordTest()
+		//{
+		//	try
+		//	{
+		//		using (StreamReader r = new StreamReader("file.json"))
+		//		{
+		//			var responseText = r.ReadToEnd();
+		//			GameLogVM result = JsonConvert.DeserializeObject<GameLogVM>(responseText);
+		//			using (BingoConn db = new BingoConn())
+		//			{
+		//				//Insert Main table
+		//				BGGameMain bGGameMain = new BGGameMain()
+		//				{
+		//					Id = "ggga",
+		//					random = result.id,
+		//					error = result.error,
+		//					total = result.result.total,
+		//					pageIndex = result.result.pageIndex,
+		//					pageSize = result.result.pageSize,
+		//					startTime = null,
+		//					endTime = null,
+		//					CreatedDate = DateTime.Now
+		//				};
+		//				db.BGGameMains.Add(bGGameMain);
+		//				db.SaveChanges();
+
+		//				//Insert Result table
+		//				foreach (var p in result.result.items)
+		//				{
+		//					try
+		//					{
+		//						var bggame = db.BGGames.Where(x => x.orderId == p.orderId).FirstOrDefault();
+		//						if (bggame == null)
+		//						{
+		//							var bGGame = new BGGame()
+		//							{
+		//								fId = "ggga",
+		//								orderId = p.orderId,
+		//								sn = p.sn,
+		//								uid = p.uid,
+		//								loginId = p.loginId,
+		//								moduleId = p.moduleId,
+		//								gameId = p.gameId,
+		//								gameName = p.gameName,
+		//								orderStatus = p.orderStatus,
+		//								bAmount = p.bAmount,
+		//								aAmount = p.aAmount,
+		//								orderFrom = p.orderFrom,
+		//								orderTime = p.orderTime,
+		//								lastUpdateTime = p.lastUpdateTime,
+		//								fromIp = p.fromIp,
+		//								issueId = p.issueId,
+		//								playId = p.playId,
+		//								playName = p.playName,
+		//								playNameEn = p.playNameEn,
+		//								validBet = p.validBet,
+		//								payment = p.payment,
+		//								CreatedDate = DateTime.Now,
+		//								betContent = p.betContent,
+		//								noComm = p.noComm
+		//							};
+		//							db.BGGames.AddOrUpdate(bGGame);
+		//						}
+		//					}
+		//					catch (Exception ex)
+		//					{
+		//						_common.LogError("Record " + p.orderId + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+		//					}
+
+		//				}
+		//				db.SaveChanges();
+		//			}
+		//		}
+
+
+
+		//		return true;
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		_common.LogError("BG/GetGameRecord" + " " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+		//		return false;
+		//	}
+		//}
+
+		#endregion
+
+		// GET: BG
+		public string BGJob()
+		{
+			try
+			{
+				lock (MyLock)
+				{
+					//GetGameRecordTest();
+					_common.LogError("BGJob Start - " + DateTime.Now.ToString(), "BG");
+
+					bool IsAllRecord = GetGameRecord();
+
+					if (IsAllRecord == true)
+					{
+						bool IsOK = GetPending();
+					}
+
+					_common.LogError("BGJob Done - " + DateTime.Now.ToString(), "BG");
+					return "Done";
+				}
+			}
+			catch (Exception ex)
+			{
+				_common.LogError("Start - " + DateTime.Now.ToString() + "  " + ex.Message.ToString(), "BG");
+				return "Err: " + ex.Message.ToString();
+			}
+		}
+
+
+	}
+}

@@ -1,0 +1,387 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="shortcut icon" href="@Url.Content("~/assets/images/logo-176x50.jpg")" type="image/x-icon">
+	<meta name="description" content="playtech">
+
+	<title>Game</title>
+	<link rel="stylesheet" href="@Url.Content("~/assets/web/assets/mobirise-icons/mobirise-icons.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap-grid.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap-reboot.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/tether/tether.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/dropdown/css/style.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/theme/css/style.css")">
+	<link rel="preload" as="style" href="@Url.Content("~/assets/mobirise/css/mbr-additional.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/mobirise/css/mbr-additional.css")" type="text/css">
+	<script src="@Url.Content("~/assets/web/assets/lazyload/lazyload.js")"></script>
+
+	<!-- pplim -->
+	<link rel="stylesheet" href="@Url.Content("~/assets/site.css")">
+	<style>
+		.hide-game {
+			display: none !important;
+		}
+	</style>
+</head>
+<body>
+	<div class="_holder">
+		@*<div class="_banner">
+			<a href="#" class="btnBack"><< BACK</a>
+			<img src="@Url.Content("~/assets/images/web banner PT v2-01.png")" alt="" />
+		</div>*@
+
+		<div class="_cats">
+			<button class="btn-all" type="button">All</button>
+			<button class="btn-hot" type="button">Hot</button>
+			<button class="btn-jackpot" type="button">Jackpot</button>
+		</div>
+
+		<div class="_games">
+			<a class="game-icon" data-gameID="gpas_5aogold_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/5_Ages_of_Gold_146x136.png")"></div><span>5 Ages of Gold</span></a>
+
+			<a class="game-icon" data-gameID="hb" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/A Night Out.png")"></div><span>A Night Out</span></a>
+
+			<a class="game-icon" data-gameID="agoeg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_of_Egypt_146x136.png")"></div><span>Age of Egypt</span></a>
+			<a class="game-icon" data-gameID="aogs" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/aogs_146x136.png")"></div><span>Age Of The Gods</span></a>
+			<a class="game-icon" data-gameID="gpas_aogetroy_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_of_the_Gods_Epic_Troy_146x136_en.png")"></div><span>AOTG : Epic Troy</span></a>
+			<a class="game-icon" data-gameID="ashamw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Amazon Wild.png")"></div><span>Amazon Wild</span></a>
+			<a class="game-icon" data-gameID="anwild" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/AnacondaWild(146x136).png")"></div><span>Anaconda Wild</span></a>
+
+			<a class="game-icon" data-gameID="arc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/arc_146x136.png")"></div><span>Archer</span></a>
+			<a class="game-icon" data-gameID="gpas_aluck_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Arowanas_Luck_146x136_en.png")"></div><span>Arowana's Luck</span></a>
+			<a class="game-icon" data-gameID="asfa" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/asfa_146x136.png")"></div><span>Asian Fantasy</span></a>
+			<a class="game-icon" data-gameID="gtsatq" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Atlantis_Queen_146x136.png")"></div><span>Atlantis Queen</span></a>
+			<a class="game-icon" data-gameID="pop_sw_ar_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Aztec_Reel_146x136.png")"></div><span>Aztec Reel</span></a>
+			<a class="game-icon" data-gameID="bs" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/bs_146x136.png")"></div><span>Bai Shi</span></a>
+			<a class="game-icon" data-gameID="bl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Beach Life.png")"></div><span>Beach Life</span></a>
+			<a class="game-icon" data-gameID="bt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Bermuda_Triangle_146x136.png")"></div><span>Bermuda Triangle</span></a>
+			<a class="game-icon" data-gameID="gpas_bwizard_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Blue_Wizard_146x136.png")"></div><span>Blue wizard</span></a>
+			<a class="game-icon" data-gameID="gpas_bomaway_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Bombs_146x136.png")"></div><span>Bombs</span></a>
+
+			<a class="game-icon" data-gameID="bob" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/bob_146x136.png")"></div><span>Bonus Bear</span></a>
+			<a class="game-icon" data-gameID="gpas_boking_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Book_of_Kings_146x136_en.png")"></div><span>Book of Kings</span></a>
+
+			<a class="game-icon" data-gameID="bfb" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/bfb_146x136.png")"></div><span>Buffalo Blitz</span></a>
+			<a class="game-icon" data-gameID="gpas_bblitz2_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Buffalo_Blitz_II_146x136.png")"></div><span>Buffalo Blitz II</span></a>
+
+			<a class="game-icon" data-gameID="gpas_ccave_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Cascading_Cave_146x136.png")"></div><span>Cascading Cave</span></a>
+
+			<a class="game-icon" data-gameID="ctiv" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ctiv_146x136.png")"></div><span>Cat In Vegas</span></a>
+			<a class="game-icon" data-gameID="catqc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Cat_Queen_146x136.png")"></div><span>Cat Queen</span></a>
+			<a class="game-icon" data-gameID="chao" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/chao_146x136.png")"></div><span>Chaoji 888</span></a>
+			<a class="game-icon" data-gameID="chl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/chl_146x136.png")"></div><span>Cherry Love</span></a>
+			<a class="game-icon" data-gameID="ashcpl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashcpl_146x136.png")"></div><span>Chests of Plenty</span></a>
+			<a class="game-icon" data-gameID="cm" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Chinese Kitchen.png")"></div><span>Chinese Kitchen</span></a>
+
+			<a class="game-icon" data-gameID="gtscbl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Cowboys and Alien.png")"></div><span>Cowboys & Aliens</span></a>
+			<a class="game-icon" data-gameID="c7" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/c7_146x136.png")"></div><span>Crazy 7</span></a>
+			<a class="game-icon" data-gameID="pop_crystallotus_eye" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Crystal_Lotus_146x136.png")"></div><span>Crystal Lotus</span></a>
+
+			<a class="game-icon" data-gameID="pop_cupcarnaval_eye" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Cup_Carnaval_146x136.png")"></div><span>Cup Carnaval</span></a>
+			<a class="game-icon" data-gameID="dt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Desert Treasure.png")"></div><span>Desert Treasure</span></a>
+			<a class="game-icon" data-gameID="dt2" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Desert Treasure 2.png")"></div><span>Desert Treasure II</span></a>
+			<a class="game-icon" data-gameID="dnr" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/dnr_146x136.png")"></div><span>Dolphin Reef</span></a>
+			<a class="game-icon" data-gameID="dlm" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Dr_Love_More_146x136.png")"></div><span>Dr Love More</span></a>
+			<a class="game-icon" data-gameID="gpas_dbond_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Dragon_Bond_146x136_en.png")"></div><span>Dragon Bond</span></a>
+			<a class="game-icon" data-gameID="gpas_dragonchi_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Dragon_Chi_146x136.png")"></div><span>Dragon Chi</span></a>
+			<a class="game-icon" data-gameID="gtsdgk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Dragon Kingdom.png")"></div><span>Dragon Kingdom</span></a>
+
+			<a class="game-icon" data-gameID="pop_sw_dr_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/DragonRiches(146x136).png")"></div><span>Dragon Riches</span></a>
+			<a class="game-icon" data-gameID="eas" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Easter Suprise.png")"></div><span>Easter Surprise</span></a>
+			<a class="game-icon" data-gameID="pop_swes_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/egspin_146x136.png")"></div><span>Egypt Spin</span></a>
+			<a class="game-icon" data-gameID="epa" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Epic Ape(146x136).png")"></div><span>Epic Ape</span></a>
+			<a class="game-icon" data-gameID="gpas_elady_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Eternal_Lady_146x136_en.png")"></div><span>Eternal Lady</span></a>
+
+			<a class="game-icon" data-gameID="fcgz" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/fcgz_146x136.png")"></div><span>Fei Cui Gong Zhu</span></a>
+			<a class="game-icon" data-gameID="gtsflzt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsflzt_146x136.png")"></div><span>Fei Long Zai Tian</span></a>
+
+
+			<a class="game-icon" data-gameID="pop_sw_fr_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fire_Reel_146x136.png")"></div><span>Fire Reel</span></a>
+			<a class="game-icon" data-gameID="pop_flfffvrts_eye" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fluffy Favourites(146x136).png")"></div><span>Fluffy Favourites</span></a>
+			<a class="game-icon" data-gameID="gtsfc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Football Carnival.png")"></div><span>Football Carnival</span></a>
+			<a class="game-icon" data-gameID="fbr" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Football Rules.png")"></div><span>Football Rules</span></a>
+			<a class="game-icon" data-gameID="fow" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Forest of Wonders.png")"></div><span>Forest of Wonder</span></a>
+
+			<a class="game-icon" data-gameID="frtf" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fortunete5(146x136).png")"></div><span>Fortunate Five</span></a>
+			<a class="game-icon" data-gameID="fday" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fortune Day_146x136.png")"></div><span>Fortune Day</span></a>
+			<a class="game-icon" data-gameID="frtln" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fortune_Lion_146x136.png")"></div><span>Fortune Lions</span></a>
+
+			<a class="game-icon" data-gameID="foy" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fountain of Youth.png")"></div><span>Fountain of Youth</span></a>
+			<a class="game-icon" data-gameID="fmn" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fruit Mania.png")"></div><span>Fruit Mania</span></a>
+
+			<a class="game-icon" data-gameID="fm" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Funky Monkey.png")"></div><span>Funky Monkey</span></a>
+
+			<a class="game-icon" data-gameID="popc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Gaelic Luck(146x136).png")"></div><span>Gaelic Luck</span></a>
+			<a class="game-icon" data-gameID="ges" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ges_146x136.png")"></div><span>Geisha Story</span></a>
+
+			<a class="game-icon" data-gameID="gemq" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gemq_146x136.png")"></div><span>Gem Queen</span></a>
+			<a class="game-icon" data-gameID="gpas_rgift_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Gem_Splash_Rainbows_Gift_146x136_en.png")"></div><span>GS: Rainbows Gift</span></a>
+			<a class="game-icon" data-gameID="glr" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Gladiator.png")"></div><span>Gladiator</span></a>
+			<a class="game-icon jackpot-game" data-gameID="glrj" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Gladiator Jackpot.png")"></div><span>Gladiator Jackpot</span></a>
+
+			<a class="game-icon" data-gameID="grel" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/grel_146x136.png")"></div><span>Gold Rally</span></a>
+			<a class="game-icon" data-gameID="glg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/glg_146x136.png")"></div><span>Golden Games</span></a>
+			<a class="game-icon" data-gameID="bib" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Great Blue.png")"></div><span>Great Blue</span></a>
+
+
+			<a class="game-icon" data-gameID="hh" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Haunted House.png")"></div><span>Haunted House</span></a>
+
+			<a class="game-icon" data-gameID="heavru" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/heavru_146x136.png")"></div><span>Heavenly Ruler</span></a>
+			<a class="game-icon" data-gameID="hk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Highway King.png")"></div><span>Highway Kings</span></a>
+
+			<a class="game-icon" data-gameID="gts50" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Hot Gems.png")"></div><span>Hot Gems</span></a>
+			<a class="game-icon" data-gameID="hotktv" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Hot_Ktv_146x136.png")"></div><span>Hot KTV</span></a>
+			<a class="game-icon" data-gameID="ashicv" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/icecave_146x136.png")"></div><span>Ice Cave</span></a>
+
+			<a class="game-icon" data-gameID="gtsir" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsir_146x136.png")"></div><span>Ice Run</span></a>
+			<a class="game-icon jackpot-game" data-gameID="aztec" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Inca_Jackpot_146x136_en.png")"></div><span>Inca Jackpot</span></a>
+			<a class="game-icon" data-gameID="infdrg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Infinity_Dragon_146x136.png")"></div><span>Infinity Dragon</span></a>
+			<a class="game-icon" data-gameID="irl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsirl_146x136.png")"></div><span>Irish Luck</span></a>
+			<a class="game-icon" data-gameID="jpgt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/jpgt_146x136.png")"></div><span>Jackpot Giant</span></a>
+			<a class="game-icon" data-gameID="gtsje" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsje_146x136.png")"></div><span>Jade Emperor</span></a>
+			<a class="game-icon" data-gameID="gtsjxb" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsjxb_146x136.png")"></div><span>Ji Xiang 8</span></a>
+			<a class="game-icon" data-gameID="jqw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jin_Qian_Wa_146x136.png")"></div><span>Jin Qian Wa</span></a>
+			<a class="game-icon" data-gameID="gpas_jflong_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jinfu_Long_146x136_en.png")"></div><span>Jinfu Long</span></a>
+
+			<a class="game-icon" data-gameID="gpas_xjinfu_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jin_Fu_Xing_Yun_146x136_en.png")"></div><span>Jinfu Xingyun</span></a>
+			<a class="game-icon" data-gameID="gpas_jmoon_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jinns_Moon_146x136_en.png")"></div><span>Jinns Moon</span></a>
+			<a class="game-icon" data-gameID="jnglg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jungle Giants(146x136).png")"></div><span>Jungle Giants</span></a>
+			<a class="game-icon" data-gameID="lndg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/lndg_146x136.png")"></div><span>Land of Gold</span></a>
+			<a class="game-icon" data-gameID="ght_a" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Lie Yan Zuan Shi_146x136.png")"></div><span>Lie Yan Zuan Shi</span></a>
+			<a class="game-icon" data-gameID="kfp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/kfp_146x136.png")"></div><span>Liu Fu Shou</span></a>
+			<a class="game-icon" data-gameID="longlong" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/longlong_146x136.png")"></div><span>Long Long Long</span></a>
+
+			<a class="game-icon" data-gameID="lumli" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Luminous_Life_146x136.png")"></div><span>Luminous Life</span></a>
+			<a class="game-icon" data-gameID="mgstk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/mgstk_146x136.png")"></div><span>Magical Stacks</span></a>
+			<a class="game-icon" data-gameID="gtsmrln" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Marylin Monroe.png")"></div><span>Marilyn Monroe</span></a>
+			<a class="game-icon" data-gameID="pop_sw_mr_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Metal_Reel_146x136.png")"></div><span>Metal Reel</span></a>
+			<a class="game-icon" data-gameID="mfrt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/mfrt_146x136.png")"></div><span>Miss Fortune</span></a>
+			<a class="game-icon" data-gameID="mnkmn" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Monkey_Mania_146x136.png")"></div><span>Monkey Mania</span></a>
+			<a class="game-icon" data-gameID="mcb" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Mr_Cashback_146x136.png")"></div><span>Mr. Cashback</span></a>
+			<a class="game-icon" data-gameID="gpas_nsshen_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Ni_Shu_Shen_Me_146x136.png")"></div><span>Ni Shu Shen Me</span></a>
+			<a class="game-icon" data-gameID="nian" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/nian_k_146x136.png")"></div><span>Nian Nian You Yu</span></a>
+
+			<a class="game-icon" data-gameID="gpas_pluck_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Panda_Luck_146x136.png")"></div><span>Panda Luck</span></a>
+			<a class="game-icon" data-gameID="pmn" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/pmn_146x136.png")"></div><span>Panther Moon</span></a>
+			<a class="game-icon" data-gameID="gpas_panthpays_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/PantherPays(146x136).png")"></div><span>Panther Pays</span></a>
+			<a class="game-icon" data-gameID="pgv" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/pgv_146x136.png")"></div><span>Penguin Vacation</span></a>
+
+			<a class="game-icon" data-gameID="pnp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Pink Panther.png")"></div><span>Pink Panther</span></a>
+			<a class="game-icon" data-gameID="pisa" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Pixel Samurai(146x136).png")"></div><span>Pixel Samurai</span></a>
+
+			<a class="game-icon" data-gameID="gtspor" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Plenty o Fortune.png")"></div><span>Plenty O'Fortune</span></a>
+			<a class="game-icon" data-gameID="phot" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/photk_146x136.png")"></div><span>Purple Hot</span></a>
+			<a class="game-icon" data-gameID="qnw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/qnw_146x136.png")"></div><span>Queen Of Wands</span></a>
+			<a class="game-icon" data-gameID="gpas_mquest_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Quest_West_146x136_en.png")"></div><span>Quest West</span></a>
+			<a class="game-icon" data-gameID="gpas_rriches_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Record_Riches_146x136_en.png")"></div><span>Record Riches</span></a>
+			<a class="game-icon" data-gameID="ririjc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ririjc_146x136.png")"></div><span>Ri Ri Jin Cai</span></a>
+			<a class="game-icon" data-gameID="pop_sw_rr_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Riverboat_Reel_146x136.png")"></div><span>Riverboat Reel</span></a>
+			<a class="game-icon" data-gameID="rky" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Rocky.png")"></div><span>Rocky</span></a>
+
+			<a class="game-icon" data-gameID="rng2" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/rng2_146x136.png")"></div><span>Rome and Glory</span></a>
+			@*<a class="game-icon" data-gameID="sfh" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sfh_146x136.png")"></div><span>Safari Heat</span></a>*@
+			<a class="game-icon" data-gameID="gtssmbr" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Samba Brazil.png")"></div><span>Samba Brazil</span></a>
+			<a class="game-icon" data-gameID="ssp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Santa Suprise.png")"></div><span>Santa Surprise</span></a>
+			<a class="game-icon" data-gameID="gpas_sjungle_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Savage_Jungle_146x136.png")"></div><span>Savage Jungle</span></a>
+			<a class="game-icon" data-gameID="pop_swsc_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Savannah_Cash_146x136.png")"></div><span>Savannah Cash</span></a>
+			<a class="game-icon" data-gameID="shmst" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Sherlock Mystery.png")"></div><span>Sherlock Mystery</span></a>
+			<a class="game-icon" data-gameID="pop_swsl_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sling_146x136.png")"></div><span>Si Ling</span></a>
+
+			<a class="game-icon" data-gameID="sx" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sx_146x136.png")"></div><span>Si Xiang</span></a>
+			<a class="game-icon" data-gameID="sis" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sis_146x136.png")"></div><span>Silent Samurai</span></a>
+			<a class="game-icon" data-gameID="sib" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Silver Bullet.png")"></div><span>Silver Bullet</span></a>
+			<a class="game-icon" data-gameID="gpas_squeen_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Sky_Queen_146x136_en.png")"></div><span>Sky Queen</span></a>
+			<a class="game-icon" data-gameID="gpas_spacedig_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Space_Digger_146x136.png")"></div><span>Space Digger</span></a>
+			<a class="game-icon" data-gameID="pop_stampede_eye" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Stampede(146x136).png")"></div><span>Stampede</span></a>
+			<a class="game-icon" data-gameID="gpas_sexiles_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Starmada_Exiles_146x136.png")"></div><span>Starmada Exiles</span></a>
+
+			<a class="game-icon" data-gameID="sol" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Streak Luck.png")"></div><span>Streak of Luck</span></a>
+			<a class="game-icon" data-gameID="pop_sw_sland_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sugla_146x136.png")"></div><span>Sugar Land</span></a>
+			<a class="game-icon" data-gameID="gtsswk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/SunWukong(146x136).png")"></div><span>Sun Wukong</span></a>
+			<a class="game-icon" data-gameID="slion" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Super Lion_146x136.png")"></div><span>Super Lion</span></a>
+			<a class="game-icon" data-gameID="cnpr" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Sweet Party.png")"></div><span>Sweet Party</span></a>
+			<a class="game-icon" data-gameID="tpd2" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/tpd2_146x136.png")"></div><span>Thai Paradise</span></a>
+
+			<a class="game-icon" data-gameID="tigc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/TigerClaw(146x136).png")"></div><span>Tiger Claw</span></a>
+
+			<a class="game-icon" data-gameID="gpas_tstacks_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Tiger_Stacks_146x136_en.png")"></div><span>Tiger stacks</span></a>
+			<a class="game-icon" data-gameID="ashtmd" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Time For A Deal_146x136.png")"></div><span>Time for a Deal</span></a>
+			<a class="game-icon" data-gameID="gpas_tttotems_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Tip_Top_Totems_146x136.png")"></div><span>Tip Top Totems</span></a>
+			<a class="game-icon" data-gameID="gpas_tgift_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Toads_Gift_146x136_en.png")"></div><span>Toad's Gift</span></a>
+			<a class="game-icon" data-gameID="topg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/topg_146x136.png")"></div><span>Top Gun</span></a>
+			<a class="game-icon" data-gameID="trpmnk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/trpmnk_146x136.png")"></div><span>Triple Monkey</span></a>
+			<a class="game-icon" data-gameID="trl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/trl_146x136.png")"></div><span>True Love</span></a>
+
+			<a class="game-icon" data-gameID="gpas_tsgift_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Tsai_Shens_Gift_146x136_en.png")"></div><span>Tsai Shens Gif</span></a>
+			<a class="game-icon" data-gameID="ub" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Ugga_Bugga_146x136.png")"></div><span>Ugga Bugga</span></a>
+			<a class="game-icon" data-gameID="er" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Vacation_Station_146x136.png")"></div><span>Vacation Station</span></a>
+			<a class="game-icon" data-gameID="gts52" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gts52_146x136.png")"></div><span>Vikingmania</span></a>
+			<a class="game-icon" data-gameID="pop_swwg_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/warg_146x136.png")"></div><span>Warriors Gold</span></a>
+			<a class="game-icon" data-gameID="pop_sw_wrl_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Water_Reel_146x136.png")"></div><span>Water Reel</span></a>
+			<a class="game-icon" data-gameID="whk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/White King.png")"></div><span>White King</span></a>
+			<a class="game-icon" data-gameID="whk2" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/White_King_II_146x136.png")"></div><span>White King 2</span></a>
+
+			<a class="game-icon" data-gameID="pop_whitewizard_eye" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/White Wizard (146x136).png")"></div><span>White Wizard</span></a>
+			<a class="game-icon" data-gameID="gtswg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/WildGambler(146x136).png")"></div><span>Wild Gambler</span></a>
+			<a class="game-icon" data-gameID="wis" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Wild Spirit.png")"></div><span>Wild Spirit</span></a>
+			<a class="game-icon" data-gameID="ashwdw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Wild_Wishes_146x136.png")"></div><span>Wild Wishes</span></a>
+			<a class="game-icon" data-gameID="gtswng" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Wings of Gold.png")"></div><span>Wings Of Gold</span></a>
+			<a class="game-icon" data-gameID="wlg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Wu Long.png")"></div><span>Wu Long</span></a>
+			<a class="game-icon jackpot-game" data-gameID="wlgjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/wlgjp_146x136.png")"></div><span>Wu Long Jackpot</span></a>
+			<a class="game-icon" data-gameID="wlcsh" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/wlcsh_146x136.png")"></div><span>Wu Lu Cai Shen</span></a>
+
+			<a class="game-icon" data-gameID="pop_sw_yxlb_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/YingXiongLuBu(146x136).png")"></div><span>Ying Xiong Lu Bu</span></a>
+			<a class="game-icon" data-gameID="yclong" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Yun Cong Long(146x136).png")"></div><span>Yun Cong Long</span></a>
+			<a class="game-icon" data-gameID="zcjb" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/zcjbjp_146x136.png")"></div><span>Zhao Cai Jin Bao</span></a>
+			<a class="game-icon" data-gameID="zctz" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/zctz_146x136.png")"></div><span>Zhao Cai Tong Zi</span></a>
+
+		</div>
+		<div class="_games">
+			<a class="game-icon" data-gameID="pop_sw_8tr1qu_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/treasq_146x136.png")"></div><span>8 Treasures 1 Queen</span></a>
+			<a class="game-icon" data-gameID="ashadv" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashadv_146x136.png")"></div><span>Adventures in Wonderland</span></a>
+			<a class="game-icon" data-gameID="gpas_appower_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_Of_The_Gods_Apollo_Power_146x136.png")"></div><span>AOTG : Apollo Power</span></a>
+			<a class="game-icon" data-gameID="ftsis" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ftsis_146x136.png")"></div><span>AOTG : Fate Sisters</span></a>
+			<a class="game-icon" data-gameID="furf" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/furf_146x136.png")"></div><span>AOTG : Furious Four</span></a>
+
+			<a class="game-icon" data-gameID="aeolus" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/stormsgod_146x136.png")"></div><span>AOTG : God of Storms</span></a>
+			<a class="game-icon" data-gameID="athn" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/athn_146x136_2.png")"></div><span>AOTG : Goddess of Wisdom</span></a>
+			<a class="game-icon" data-gameID="aogmm" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_of_the_Gods_Medusa_and_Monsters_146x136.png")"></div><span>AOTG : Medusa & Monsters</span></a>
+			<a class="game-icon" data-gameID="aogmt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_Of_The_Gods_Mighty_Midas_146x136.png")"></div><span>AOTG : Mighty Midas</span></a>
+			<a class="game-icon" data-gameID="hrcls" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/hrcls_146x136.png")"></div><span>AOTG : Prince Of Olympus</span></a>
+			<a class="game-icon" data-gameID="aogrots" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_of_the_Gods_Ruler_of_the_Sky_146x136.png")"></div><span>AOTG : Ruler Of the Sky</span></a>
+			<a class="game-icon" data-gameID="aogroo" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Age_Of_The_Gods_Rulers_of_Olympus_146x136.png")"></div><span>AOTG : Rulers Of Olympus</span></a>
+			<a class="game-icon" data-gameID="gpas_aogrotsea_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/AOTG_Ruler_of_the_Seas_146x136.png")"></div><span>AOTG : Ruler of the Seas</span></a>
+			<a class="game-icon" data-gameID="ashbob" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashbob_146x136.png")"></div><span>Bounty of the Beanstalk</span></a>
+			<a class="game-icon" data-gameID="gpas_cotvalk_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Call_Of_The_Valkyries_146x136.png")"></div><span>Call Of The Valkyries</span></a>
+			<a class="game-icon" data-gameID="ct" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Captains_Treasure_146x136.png")"></div><span>Captain's Treasure</span></a>
+			<a class="game-icon" data-gameID="ctp2" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ctp2_146x136.png")"></div><span>Captain's Treasure Pro</span></a>
+			<a class="game-icon" data-gameID="ccccny" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Coin_Coin_Coin_CNY_146x136.png")"></div><span>Coin Coin Coin CNY</span></a>
+			<a class="game-icon" data-gameID="gtsdrdv " href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Daring Dave.png")"></div><span>Daring Dave & the Eye of Ra</span></a>
+			<a class="game-icon" data-gameID="drgch" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Dragon Champions(146x136).png")"></div><span>Dragon Champions</span></a>
+			<a class="game-icon" data-gameID="gpas_extrfruits_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Extreme_Fruits_Ultimate_146x136.png")"></div><span>Extreme Fruits Ultimate</span></a>
+			<a class="game-icon" data-gameID="ashfta" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashfta_146x136.png")"></div><span>Fairest of Them All</span></a>
+			<a class="game-icon" data-gameID="gpas_fatchoy_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fat_Choy_Choy_Sun_146x136_en.png")"></div><span>Fat Choy Choy Sun</span></a>
+			<a class="game-icon" data-gameID="fkmj" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/fkmj_146x136.png")"></div><span>Feng Kuang Ma Jiang</span></a>
+			<a class="game-icon" data-gameID="gpas_fiesta_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/FiestadelaMemoria(146x136).png")"></div><span>Fiesta de la Memoria</span></a>
+			<a class="game-icon" data-gameID="gpas_rempress_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fire_Blaze_River_Empress_146x136_en.png")"></div><span>Fire Blaze: River Empress</span></a>
+			<a class="game-icon" data-gameID="gpas_sgift_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Fire_Blaze_Sisters_Gift_146x136_en.png")"></div><span>Fire Blaze: Sisters Gift</span></a>
+			<a class="game-icon" data-gameID="ftg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ftg_146x136.png")"></div><span>Five Tiger Generals</span></a>
+			<a class="game-icon" data-gameID="fxf" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/fxf_146x136.png")"></div><span>Fortunes of The Fox</span></a>
+			<a class="game-icon" data-gameID="fdt" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Frankie Detroit.png")"></div><span>Frankie Dettori's Magic 7</span></a>
+			<a class="game-icon jackpot-game" data-gameID="fdtjg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/fdtjp_146x136.png")"></div><span>Frankie Dettori Magic 7 Jackpot</span></a>
+			<a class="game-icon" data-gameID="ashfmf" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashfmf_146x136.png")"></div><span>Full Moon Fortunes</span></a>
+			<a class="game-icon" data-gameID="fff" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Funky Fruit Farm.png")"></div><span>Funky Fruits Farm</span></a>
+			<a class="game-icon jackpot-game" data-gameID="fnfrj" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Funky Fruits.png")"></div><span>Funky Fruits Jackpot Game</span></a>
+			<a class="game-icon jackpot-game" data-gameID="fmjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/fmjp_146x136.png")"></div><span>Funky Monkey Jackpot</span></a>
+			<a class="game-icon jackpot-game" data-gameID="gesjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gesjp_146x136.png")"></div><span>Geisha Story Jackpot</span></a>
+			<a class="game-icon" data-gameID="hlf" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Halloween Fortune.png")"></div><span>Halloween Fortune</span></a>
+			<a class="game-icon" data-gameID="pop_swhcs_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/haocs_146x136.png")"></div><span>Haoshi Cheng Shuang</span></a>
+			<a class="game-icon" data-gameID="ashhof" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/frontierheart_146x136.png")"></div><span>Heart of the Frontier</span></a>
+			<a class="game-icon" data-gameID="ashhotj" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashhotj_146x136.png")"></div><span>Heart of The Jungle</span></a>
+			<a class="game-icon" data-gameID="gtshwkp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtshwkp_146x136.png")"></div><span>Highway Kings Pro</span></a>
+			<a class="game-icon jackpot-game" data-gameID="jqwjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Jin_Qian_Wa_Jackpot_146x136.png")"></div><span>Jin Qian Wa Jackpot</span></a>
+			<a class="game-icon" data-gameID="legwld" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/wildlegacy_146x136.png")"></div><span>Legacy Of The Wild</span></a>
+			<a class="game-icon" data-gameID="ljxy" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Long_Jia_Xiang_Yun_146x136.png")"></div><span>Long Jia Xiang Yun</span></a>
+			<a class="game-icon" data-gameID="nk" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Neptune Kingdom.png")"></div><span>Neptunes Kingdom</span></a>
+			<a class="game-icon" data-gameID="gpas_scqueen_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Pharaohs_Daughter_146x136_en.png")"></div><span>Pharaoh’s Daughter</span></a>
+			<a class="game-icon" data-gameID="phtd" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Pharaoh's Treasure Deluxe(146x136).png")"></div><span>Pharaoh’s Treasure Deluxe</span></a>
+			<a class="game-icon" data-gameID="pst" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/pst_146x136.png")"></div><span>Pharaoh's Secrets</span></a>
+			<a class="game-icon" data-gameID="paw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Piggies and the Wolves.png")"></div><span>Piggies and the Wolf</span></a>
+			<a class="game-icon" data-gameID="gpas_rothr_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/RaidersoftheHiddenRealm(146x136).png")"></div><span>Raiders of the Hidden Realm</span></a>
+			<a class="game-icon jackpot-game" data-gameID="pop_sw_rm_ab_jp_skw" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Respin_Mania_Wu_Shi_Jackpot_146x136_en.png")"></div><span>Respin Mania Wu Shi Jackpot</span></a>
+			<a class="game-icon" data-gameID="gpas_satsumo_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Satsumo'sRevenge(146x136).png")"></div><span>Satsumo's Revenge</span></a>
+			<a class="game-icon" data-gameID="samz" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/samz_146x136.png")"></div><span>Secrets of the Amazon</span></a>
+			<a class="game-icon jackpot-game" data-gameID="sisjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/sisjp_146x136.png")"></div><span>Silent Samurai Jackpot</span></a>
+			<a class="game-icon" data-gameID="ashsbd" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashsbd_146x136.png")"></div><span>Sinbad's Golden Voyage</span></a>
+			<a class="game-icon" data-gameID="srcg" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/spud_146x136.png")"></div><span>Spud O'Reilly's Crops of Gold</span></a>
+			<a class="game-icon" data-gameID="gtsgme" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/gtsgme_146x136.png")"></div><span>The Great Ming Empire</span></a>
+			<a class="game-icon" data-gameID="donq" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/donq_146x136.png")"></div><span>The Riches of Don Quixote</span></a>
+			<a class="game-icon" data-gameID="gpas_tigertdp_pop" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Tiger_Turtle_Dragon_Phoenix_146x136_en.png")"></div><span>Tiger Turtle Dragon Phoenix</span></a>
+			<a class="game-icon" data-gameID="ttc" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Top Trump Celebs.png")"></div><span>Top Trumps Celebs</span></a>
+			<a class="game-icon" data-gameID="totl" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Treasures_of_the_lamps_146x136.png")"></div><span>Treasures of the lamps</span></a>
+			<a class="game-icon" data-gameID="tmqd" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Three Musketeers.png")"></div><span>3 Musketeers and Queen's Diamond</span></a>
+			<a class="game-icon" data-gameID="vcstd" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/vcstd_146x136.png")"></div><span>Vacation Station Deluxe</span></a>
+			<a class="game-icon" data-gameID="wotp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/WaysofthePhoenix(146x136).png")"></div><span>Ways of the Phoenix</span></a>
+			<a class="game-icon" data-gameID="ashwgaa" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ashwgaa_146x136.png")"></div><span>Wild Gambler 2: Arctic Adventure</span></a>
+			<a class="game-icon" data-gameID="xufe" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Xuan Pu Lian Huan(146x136).png")"></div><span>Xuan Pu Lian Huan</span></a>
+			<a class="game-icon jackpot-game" data-gameID="zcjbjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/Zhao Cai Jing Bao.png")"></div><span>Zhao Cai Jin Bao Jackpot</span></a>
+			<a class="game-icon jackpot-game" data-gameID="zctzjp" href="#"><div><img alt="game1" src="@Url.Content("~/assets/images/ZhaoCaiTongZiJackpot(146x136).png")"></div><span>Zhao Cai Tong Zi Jackpot</span></a>
+
+		</div>
+		@*<section once="footers" class="cid-rYR1ltqCqM" id="footer6-14">
+				<div class="container">
+					<div class="media-container-row align-center mbr-white">
+						<div class="col-12">
+							<p class="mbr-text mb-0 mbr-fonts-style display-4">© Copyright 2021</p>
+						</div>
+					</div>
+				</div>
+			</section>*@
+	</div>
+
+	<div class="_scripts">
+		<script src="@Url.Content("~/assets/web/assets/jquery/jquery.min.js")"></script>
+		<script src="@Url.Content("~/assets/popper/popper.min.js")"></script>
+		<script src="@Url.Content("~/assets/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@Url.Content("~/assets/tether/tether.min.js")"></script>
+		<script src="@Url.Content("~/assets/smoothscroll/smooth-scroll.js")"></script>
+		<script src="@Url.Content("~/assets/dropdown/js/nav-dropdown.js")"></script>
+		<script src="@Url.Content("~/assets/dropdown/js/navbar-dropdown.js")"></script>
+		<script src="@Url.Content("~/assets/touchswipe/jquery.touch-swipe.min.js")"></script>
+		<script src="@Url.Content("~/assets/theme/js/script.js")"></script>
+	</div>
+	<script>
+		function getUrlParameter(name) {
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		};
+
+		$(document).on('click', '.game-icon', function (event) {
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: '@Url.Action("LaunchSlot", "PT")',
+				data: {
+					"playerName": getUrlParameter('playerName'),
+					"gameID": $(this).attr('data-gameID'),
+					"lang": getUrlParameter('lang') == '' ? 'en' : getUrlParameter('lang')
+				},
+				success: function (res) {
+					var data = JSON.parse(res.Data);
+					if (data && data.status == 1) {
+						window.location.replace(data.message);
+					}
+				}
+			});
+		});
+
+		//$(document).on('click', '.btnBack', function (event) {
+		//	var url = window.location.origin + "/PT/Index?playerName=" + getUrlParameter('playerName') + "&lang=" + (getUrlParameter('lang') == '' ? 'en' : getUrlParameter('lang'));
+		//	window.location.replace(url);
+		//});
+
+		$(document).on('click', '.btn-all', function (event) {
+			$('.game-icon').removeClass('hide-game');
+		});
+
+		$(document).on('click', '.btn-hot', function (event) {
+			$('.game-icon').removeClass('hide-game');
+		});
+
+		$(document).on('click', '.btn-jackpot', function (event) {
+			$('.game-icon').addClass('hide-game');
+			$('.jackpot-game').removeClass('hide-game');
+		});
+	</script>
+</body>
+</html>

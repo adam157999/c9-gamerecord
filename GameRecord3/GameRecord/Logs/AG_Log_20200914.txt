@@ -1,0 +1,18 @@
+04:08:52.241
+AG/UpsertBetRecord STEP 7 
+
+04:11:01.610
+AG/UpsertBetRecord STEP 7 
+
+04:12:08.272
+AG/MoveFile 14/9/2020 4:12:08 AM  Access to the path 'C:\inetpub\wwwroot\GameRecord Publish\AGProcessedFolder\20200913' is denied.
+
+04:12:08.602
+AG/UpsertBetRecord 14/9/2020 4:12:08 AM  There is an unclosed literal string. Line 1, position 162.
+
+04:12:59.427
+AG/UpsertBetRecord STEP 7 
+
+04:14:04.095
+AG/UpsertBetRecord 14/9/2020 4:14:04 AM  There is an unclosed literal string. Line 1, position 162.
+

@@ -1,0 +1,317 @@
+﻿@model GameRecord.Gamess.Joker.JokerIntegration.ExtGetListGameV2Response
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Games</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .game-thumbnail img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .game-thumbnail p {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        @@media (max-width: 768px) {
+            .row-cols-2 > * {
+                width: 20% !important;
+                font-size: 10px;
+            }
+        }
+
+        @@media (min-width: 768px) {
+            .row-cols-md-3 > * {
+                width: 10% !important;
+                font-size: 12px;
+            }
+        }
+
+        @@media (min-width: 992px) {
+            .row-cols-md-3 > * {
+                width: 10% !important;
+                font-size: 15px;
+            }
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            display: none;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div id="overlay">Loading...</div>
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none; ">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1; ">
+            TOP 30 Games
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @{ 
+
+                    var sortlist = new List<string>
+                                                    {
+                                                        "ww3a8wsu4de7c", "soojfuqnaxycn", "3yfmucpss64mk", "tocki7xk7xwq1", "86burqb38a9ua",
+                                                        "z7k6mqf3z495a", "mur8wje4dccb1", "cz3wgrounyetc", "5m6k9j7rwspjs", "j9nzkkbjfaz1a",
+                                                        "wcaadzg74mj7y", "ue8mt39rhzpps", "zygj7oqga9nck", "satj3o6ya8dcq", "3fx69pizs144w",
+                                                        "ur8593z8hu17w", "ezjsgctugyauc", "uygm7axgh91qk", "hcu3p8r71kj3y", "b1cnw7mkppwg1",
+                                                        "bkxno75wqiigs", "bmr8675wqiigs", "96k1k6d3x39za", "qd1fcneqbhgy4", "1wt58azdhdo6c",
+                                                        "1ru5x5zx7us6r", "gkubyu4cjibrg", "kxyznmbpret1y", "pz7wsnombyroh", "4akkze7ywgukq",
+                                                        "dhdirsn3m3xia", "cuarr8e1ncebn", "y6q14hdtq35ze", "4tyxfmpnwqokn", "hb4cpgc6u6qj4",
+                                                        "byz81hmsq748k", "ioheiiqk3xrc1", "oajk3h9o685xq", "gn1bc1kqj7gr4", "kdn8ckjqfhsn4",
+                                                        "7b6c7rcs16kjk", "d4fyes4amfxf6", "uafejs6a58xp6", "rsjogw1ukbeic", "swt38osdadyhc",
+                                                        "m94wkgy3daxta", "fqho1inijjfwo", "n1ydr5mncpogn", "e5jgac3ogr5dq"
+                                                    };
+
+                    var HSsortlist = new HashSet<string>(sortlist);
+
+                    var filteredListGames = Model.ListGames
+                        .Where(x => HSsortlist.Contains(x.GameCode))
+                        .ToList();
+
+                    var sortedListGames = sortlist
+                        .Select(code => filteredListGames.FirstOrDefault(g => g.GameCode == code))
+                        .Where(g => g != null)
+                        .Take(30).ToList();
+
+                }
+
+                @if (sortedListGames != null && sortedListGames.Count > 0)
+                {
+                    foreach (var row in sortedListGames)
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none; ">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1; ">
+            ECasino
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @if (Model.ListGames != null && Model.ListGames.Count > 0)
+                {
+                    foreach (var row in Model.ListGames.Where(x => x.GameType == "ECasino").OrderBy(x => x.Order).ToList())
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none; ">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1;">
+            Slot
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @if (Model.ListGames != null && Model.ListGames.Count > 0)
+                {
+                    foreach (var row in Model.ListGames.Where(x => x.GameType == "Slot").OrderBy(x => x.Order).ToList())
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none;">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1; ">
+            Crash
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @if (Model.ListGames != null && Model.ListGames.Count > 0)
+                {
+                    foreach (var row in Model.ListGames.Where(x => x.GameType == "Crash").OrderBy(x => x.Order).ToList())
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none;">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1; ">
+            Fishing
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @if (Model.ListGames != null && Model.ListGames.Count > 0)
+                {
+                    foreach (var row in Model.ListGames.Where(x => x.GameType == "Fishing").OrderBy(x => x.Order).ToList())
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 2em 1em 1em 1em; position: relative; margin-top: 2em; border-bottom: none;">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateY(-50%); background: white; padding: 0 0.5em; font-weight: bold; z-index: 1; ">
+            Bingo
+        </div>
+
+        <div class="container mt-4">
+            <div id="games" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @if (Model.ListGames != null && Model.ListGames.Count > 0)
+                {
+                    foreach (var row in Model.ListGames.Where(x => x.GameType == "Bingo").OrderBy(x => x.Order).ToList())
+                    {
+                        <div class="col game-thumbnail text-center">
+                            <img src="@(String.Format(row.Image1) + "?" + DateTime.Now.ToString("yyyyMMddHHmmss"))" alt="@row.GameName" class="img-thumbnail"
+                                 onclick="launchGame(@row.GameCode)" />
+                            <p data-gameid="@row.GameCode">@row.GameName</p>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+    var overlay; // Declare globally
+
+    document.addEventListener("DOMContentLoaded", function () {
+        overlay = document.getElementById("overlay"); // Assign after DOM loads
+        overlay.style.display = "flex";
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 1000);
+    });
+
+    function showOverlay() {
+        if (overlay) overlay.style.display = "flex";
+    }
+
+    function hideOverlay() {
+        if (overlay) overlay.style.display = "none";
+    }
+
+
+function launchGame(gameCode) {
+
+    var playerid = "@(ViewBag.playerid)";
+    var currency = "@(ViewBag.currency)";
+    var ip = "@(ViewBag.ip)";
+    var language = "@(ViewBag.lang)";
+    var mobile = "@(ViewBag.mobile)";
+
+
+    showOverlay();
+
+    $.ajax({
+        url: "@Url.Action("LaunchGame", "Joker")",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            gameCode: gameCode,
+            playerid: playerid,
+            currency: currency,
+            ip: ip,
+            mobile: mobile,
+            Language: language
+        }),
+        success: function(response) {
+
+            hideOverlay();
+
+            if (response.success) {
+                // Redirect to game URL
+                window.location.href = response.url;
+            } else {
+                alert(response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            hideOverlay();
+            alert("Error launching game: " + error);
+        }
+    });
+}
+
+// Attach click event to game images
+$(document).ready(function() {
+    $(".img-thumbnail").on("click", function() {
+        var gameCode = $(this).next("p").attr("data-gameid");
+        launchGame(gameCode);
+    });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿.ap #games {
+    padding:15px;
+}
+.ap #games img {
+    cursor:pointer;
+}
+.ap .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.ap .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.ap .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.ap .btns button.btn-outline-primary {
+    border:0;
+}
+.ap .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.ap #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.ap ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.ap ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .ap #games {
+        display: block;
+        text-align:center;
+    }
+    .ap ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.ap #overlay {
+    display:none;
+}
+.ap #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}

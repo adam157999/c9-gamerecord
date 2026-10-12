@@ -1,0 +1,109 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="shortcut icon" href="assets/images/logo-176x50.jpg" type="image/x-icon">
+	<meta name="description" content="playtech">
+
+	<title>Home</title>
+	<link rel="stylesheet" href="@Url.Content("~/assets/web/assets/mobirise-icons/mobirise-icons.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap-grid.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/bootstrap/css/bootstrap-reboot.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/tether/tether.min.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/dropdown/css/style.css")">
+	<link rel="stylesheet" href="@Url.Content("~/assets/theme/css/style.css")">
+	<link rel="preload" as="style" href="@Url.Content("~/assets/mobirise/css/mbr-additional.css")">
+	<a href="~/Controllers/BGController.cs">~/Controllers/BGController.cs</a>
+	<link rel="stylesheet" href="@Url.Content("~/assets/mobirise/css/mbr-additional.css")" type="text/css">
+	<script src="@Url.Content("~/assets/web/assets/lazyload/lazyload.js")"></script>
+
+	<!-- pplim -->
+	<link rel="stylesheet" href="@Url.Content("~/assets/site.css")">
+</head>
+<body>
+	<div class="_holder">
+
+		<div class="_banner">
+			<img src="@Url.Content("~/assets/images/web banner PT v2-01.png")" alt="" />
+		</div>
+
+		<div class="_content">
+			<a class="live-icon"><img src="@Url.Content("~/assets/images/button-live-2000x1504-800x602.png")" alt=""></a>
+			<a class="slot-icon"><img src="@Url.Content("~/assets/images/button-slot-2000x1504.png")" alt=""></a>
+		</div>
+
+		@*<section once="footers" class="cid-rYR1ltqCqM" id="footer6-14">
+				<div class="container">
+					<div class="media-container-row align-center mbr-white">
+						<div class="col-12">
+							<p class="mbr-text mb-0 mbr-fonts-style display-4">© Copyright 2021</p>
+						</div>
+					</div>
+				</div>
+			</section>*@
+	</div>
+
+	<div class="_scripts">
+		<script src="@Url.Content("~/assets/web/assets/jquery/jquery.min.js")"></script>
+		<script src="@Url.Content("~/assets/popper/popper.min.js")"></script>
+		<script src="@Url.Content("~/assets/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@Url.Content("~/assets/tether/tether.min.js")"></script>
+		<script src="@Url.Content("~/assets/smoothscroll/smooth-scroll.js")"></script>
+		<script src="@Url.Content("~/assets/dropdown/js/nav-dropdown.js")"></script>
+		<script src="@Url.Content("~/assets/dropdown/js/navbar-dropdown.js")"></script>
+		<script src="@Url.Content("~/assets/touchswipe/jquery.touch-swipe.min.js")"></script>
+		<script src="@Url.Content("~/assets/theme/js/script.js")"></script>
+	</div>
+	<script>
+		function getUrlParameter(name) {
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		};
+
+		$(document).on('click', '.slot-icon', function (event) {
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: '@Url.Action("LaunchSlotLobby", "PT")',
+				data: {
+					"playerName": getUrlParameter('playerName'),
+					"lang": getUrlParameter('lang') == '' ? 'en' : getUrlParameter('lang')
+				},
+				success: function (res) {
+					var data = JSON.parse(res.Data);
+					if (data && data.status == 1) {
+						window.location.replace(data.message);
+					}
+				}
+			});
+		});
+
+		$(document).on('click', '.live-icon', function (event) {
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: '@Url.Action("LaunchLive", "PT")',
+				data: {
+					"playerName": getUrlParameter('playerName'),
+					"lang": getUrlParameter('lang') == '' ? 'en' : getUrlParameter('lang')
+				},
+				success: function (res) {
+					var data = JSON.parse(res.Data);
+					if (data && data.status == 1) {
+						window.location.replace(data.message);
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

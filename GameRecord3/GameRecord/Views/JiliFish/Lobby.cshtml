@@ -1,0 +1,151 @@
+@model GameRecord.Models.JiliFishLobbyVM
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Games</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Scripts/LobbyCss.css" />
+</head>
+<body class="relax">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="inner-addon left-addon mb-3 mt-3">
+                <i class="fa fa-search"></i>
+                <input type="text" id="txtGameName" class="form-control" placeholder="Search Game Name" aria-label="search-game-name">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div id="filter" class="d-flex justify-content-center btns">
+                <button class="btn-outline-primary custom jCat" type="button" id="All">All</button>
+                <button class="btn-outline-primary custom jCat" type="button" id="Hot">Hot</button>
+                <button class="btn-outline-primary custom jCat" type="button" id="New">New</button>
+                <button class="btn-outline-primary custom jCat" type="button" id="Favourite">Bonus Buy</button>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"><img src="~/images/loading.gif" /></div>
+    <hr class="hr1">
+    <div id="games" class="row">
+        @foreach (var g in Model.Games)
+        {
+            <div class="_game text-center">
+                <img src="@g.GameIcon" alt="" class="img-thumbnail" onclick="launchGame('@g.GameID')">
+                @if (Model.lang == "en")
+                {
+                    <p data-gameid="@g.GameID">@g.GameName</p>
+                }
+                else
+                {
+                    <p data-gameid="@g.GameID">@g.GameNameCn</p>
+                }
+            </div>
+        }
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" crossorigin="anonymous"></script>
+    <script>
+        var timer;
+        $('#txtGameName').keyup(function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                var gameName = $.trim($("#txtGameName").val());
+                var gameNameLength = $("#txtGameName").val().length;
+                if (gameNameLength >= 3 || gameNameLength == 0) {
+                    GetGames(gameName, null);
+                }
+            }, 500)
+        });
+        $('.jCat').click(function () {
+            $("#txtGameName").val("");
+            GetGames(null, $(this).attr('id'));
+        });
+        function GetGames(gameName, gameCategory) {
+            var lang = '@Model.lang';
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: "/JiliFish/SearchGame",
+                data: {
+                    'gameName': gameName,
+                    'lang': lang,
+                    'gameCategory': gameCategory,
+                },
+                beforeSend: function () {
+                    fadeIn();
+                },
+                success: function (gameList) {
+                    if (gameList != null) {
+                        var html = '';
+                        for (i = 0; i < gameList.length; i++) {
+                            html += '<div class="_game text-center">';
+                            html += "<img src=" + encodeURI(gameList[i].GameIcon) + " alt=''class='img-thumbnail' onclick=launchGame(" + "'" + gameList[i].GameID + "'" + ")>";
+                            html += "<p data-gameid=" + gameList[i].GameID + ">" + (lang == "en" ? gameList[i].GameName : gameList[i].GameNameCn) + "</p>";
+                            html += '</div>';
+                        }
+                        $("#games").html(html);
+                    } else {
+                        $("#games").html('');
+                    }
+                    fadeOut();
+                }
+            });
+        };
+        function fadeIn() {
+            $("#overlay").fadeIn(300);
+        };
+        function fadeOut() {
+            $("#overlay").fadeOut(300);
+        };
+        $(document).ready(function () {
+            $('#filter > button').removeClass('btn-primary');
+            $('#filter > button').addClass('btn-outline-primary');
+        });
+        $("#filter > button").click(function () {
+            $('#filter > button').removeClass('btn-primary');
+            $('#filter > button').addClass('btn-outline-primary');
+            $(this).removeClass('btn-outline-primary');
+            $(this).addClass('btn-primary');
+        });
+        function isMobile() {
+            if (navigator.userAgentData) {
+                return navigator.userAgentData.mobile;
+            }
+            return /Android|iPhone|iPad|iPod|Windows Phone|Opera Mini|Mobile/i.test(navigator.userAgent);
+        }
+        function launchGame(gameId) {
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: '/JiliFish/LaunchGame',
+                data: {
+                    'gameCode': gameId,
+                    'playerid': '@Model.username',
+                    'currency': '@Model.currency',
+                    'ip': '',
+                    'mobile': isMobile(),
+                    'Language': '@Model.lang'
+                },
+                beforeSend: function () {
+                    fadeIn();
+                },
+                success: function (res) {
+                    if (res.success && res.url) {
+                        window.location.href = res.url;
+                    } else {
+                        alert(res.message || 'Failed to launch game.');
+                    }
+                    fadeOut();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

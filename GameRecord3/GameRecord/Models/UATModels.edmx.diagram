@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f85f8f6e8de4b6f8074c06dac73b6d4" Name="Diagram1">
+        <EntityTypeShape EntityType="Bingo_stagingModel.ACGame" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.GameMappingUAT" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.GameTransferLimitUAT" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.ADMJobDateUAT" Width="1.5" PointX="5.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.BGGameUAT" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.BGGameMainUAT" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.EvolutionGameUAT" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.EvolutionGameMainUAT" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.TPGGameUAT" Width="1.5" PointX="7.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Bingo_stagingModel.TPGGameMainUAT" Width="1.5" PointX="8.75" PointY="0.75" />
+        <AssociationConnector Association="Bingo_stagingModel.FK_EvolutionGame_EvolutionGameMain" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

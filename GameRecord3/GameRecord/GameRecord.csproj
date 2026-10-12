@@ -1,0 +1,1343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7DD85015-1045-4185-AC31-F3BD6DD6F481}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameRecord</RootNamespace>
+    <AssemblyName>GameRecord</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ABS">
+      <HintPath>..\DLL\ABS.dll</HintPath>
+    </Reference>
+    <Reference Include="AESexy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\AESexy.dll</HintPath>
+    </Reference>
+    <Reference Include="AsiaGaming">
+      <HintPath>..\DLL\AsiaGaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Core, Version=1.4.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.4.1\lib\netstandard2.0\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Blobs, Version=12.6.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Storage.Blobs.12.6.0\lib\netstandard2.0\Azure.Storage.Blobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Common, Version=12.5.2.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Storage.Common.12.5.2\lib\netstandard2.0\Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BG">
+      <HintPath>..\DLL\BG.dll</HintPath>
+    </Reference>
+    <Reference Include="BT28WIN">
+      <HintPath>..\DLL\BT28WIN.dll</HintPath>
+    </Reference>
+    <Reference Include="CQ9">
+      <HintPath>..\DLL\CQ9.dll</HintPath>
+    </Reference>
+    <Reference Include="DG-DreamGaming, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DG-DreamGaming.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.5.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.5.5\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="GP">
+      <HintPath>..\DLL\GP.dll</HintPath>
+    </Reference>
+    <Reference Include="Habanero, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Habanero.dll</HintPath>
+    </Reference>
+    <Reference Include="IBC">
+      <HintPath>..\DLL\IBC.dll</HintPath>
+    </Reference>
+    <Reference Include="JDB">
+      <HintPath>..\DLL\JDB.dll</HintPath>
+    </Reference>
+    <Reference Include="JiLi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\JiLi.dll</HintPath>
+    </Reference>
+    <Reference Include="KA">
+      <HintPath>..\DLL\KA.dll</HintPath>
+    </Reference>
+    <Reference Include="King855, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\c9_game\King855\King855\King855\bin\Debug\King855.dll</HintPath>
+    </Reference>
+    <Reference Include="KISS918">
+      <HintPath>..\DLL\KISS918.dll</HintPath>
+    </Reference>
+    <Reference Include="LEG">
+      <HintPath>..\DLL\LEG.dll</HintPath>
+    </Reference>
+    <Reference Include="LK-L365">
+      <HintPath>..\DLL\LK-L365.dll</HintPath>
+    </Reference>
+    <Reference Include="MEGA">
+      <HintPath>..\DLL\MEGA.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Blob, Version=11.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Storage.Blob.11.2.2\lib\net452\Microsoft.Azure.Storage.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Common, Version=11.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Storage.Common.11.2.2\lib\net452\Microsoft.Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.3.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.3.6\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="MKY888">
+      <HintPath>..\DLL\MKY888.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NextSpin">
+      <HintPath>..\DLL\NextSpin.dll</HintPath>
+    </Reference>
+    <Reference Include="Obet">
+      <HintPath>..\DLL\Obet.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayTech">
+      <HintPath>..\DLL\PlayTech.dll</HintPath>
+    </Reference>
+    <Reference Include="PlaytechV2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\PlaytechV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Pragmatic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Pragmatic.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SAG">
+      <HintPath>..\DLL\SAG.dll</HintPath>
+    </Reference>
+    <Reference Include="SpadeGaming">
+      <HintPath>..\DLL\SpadeGaming.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=4.0.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.9\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.9\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="VGS">
+      <HintPath>..\DLL\VGS.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.4.0.0-beta4\lib\net46\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="CommonUAT.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Common\CatchData.cs" />
+    <Compile Include="Common\Storage.cs" />
+    <Content Include="Content\Playtech.png" />
+    <Content Include="Content\PTV2\AGDRA_UAT.key" />
+    <Content Include="Content\PTV2\AGDRA_UAT.p12">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\PTV2\AGDRA_UAT.pem" />
+    <Content Include="Content\PTV2\AGDRA_UAT.pw" />
+    <None Include="Controllers\BGController.cs.archive" />
+    <Compile Include="Common\TokenGenerator.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="Controllers\Ace333Controller.cs" />
+    <Compile Include="Controllers\AdvantPlayController.cs" />
+    <Compile Include="Controllers\AGController.cs" />
+    <Compile Include="Controllers\AWCFishController.cs" />
+    <Compile Include="Controllers\AzureNetworkController.cs" />
+    <Compile Include="Controllers\BNGController.cs" />
+    <Compile Include="Controllers\BT28WinController.cs" />
+    <Compile Include="Controllers\Callback\Ace333Controller.cs" />
+    <Compile Include="Controllers\Callback\Ace333HeaderAttribute.cs" />
+    <Compile Include="Controllers\Callback\GPController.cs" />
+    <Compile Include="Controllers\Callback\PlayStarController.cs" />
+    <Compile Include="Controllers\ClotPlayController.cs" />
+    <Compile Include="Controllers\CQ9Controller.cs" />
+    <Compile Include="Controllers\CQ9FishController.cs" />
+    <Compile Include="Controllers\DCTController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\BGController.cs" />
+    <Compile Include="Controllers\ABSController.cs" />
+    <Compile Include="Controllers\EVOBTGController.cs" />
+    <Compile Include="Controllers\EVONetEntController.cs" />
+    <Compile Include="Controllers\EVONLCController.cs" />
+    <Compile Include="Controllers\EVORedtigerController.cs" />
+    <Compile Include="Controllers\FachaiFishController.cs" />
+    <Compile Include="Controllers\IBCController.cs" />
+    <Compile Include="Controllers\JDBFishController.cs" />
+    <Compile Include="Controllers\JDBHistoryController.cs" />
+    <Compile Include="Controllers\FachaiController.cs" />
+    <Compile Include="Controllers\JiliFishController.cs" />
+    <Compile Include="Controllers\LEGController.cs" />
+    <Compile Include="Controllers\Live22Controller.cs" />
+    <Compile Include="Controllers\MGController.cs" />
+    <Compile Include="Controllers\NetworkController.cs" />
+    <Compile Include="Controllers\NextSpinCallbackController.cs" />
+    <Compile Include="Controllers\NextSpinController.cs" />
+    <Compile Include="Controllers\ArrowEdgeController.cs" />
+    <Compile Include="Controllers\JokerController.cs" />
+    <Compile Include="Controllers\BeSoftController.cs" />
+    <Compile Include="Controllers\OctoPlayController.cs" />
+    <Compile Include="Controllers\OnlyPlayController.cs" />
+    <Compile Include="Controllers\PlayStarController.cs" />
+    <Compile Include="Controllers\PPSlotJob3AController.cs" />
+    <Compile Include="Controllers\PPSlotJob4Controller.cs" />
+    <Compile Include="Controllers\PPSlotJob5Controller.cs" />
+    <Compile Include="Controllers\PPSlotJob6Controller.cs" />
+    <Compile Include="Controllers\PragmaticSeamlessController.cs" />
+    <Compile Include="Controllers\PTV2JobController.cs" />
+    <Compile Include="Controllers\PTV2LiveController.cs" />
+    <Compile Include="Controllers\PTV2SlotController.cs" />
+    <Compile Include="Controllers\PTJobController.cs" />
+    <Compile Include="Controllers\HackSawController.cs" />
+    <Compile Include="Controllers\RelaxJob1Controller.cs" />
+    <Compile Include="Controllers\RelaxJobController.cs" />
+    <Compile Include="Controllers\RelaxController.cs" />
+    <Compile Include="Controllers\LionKingController.cs" />
+    <Compile Include="Controllers\LKL365DController.cs" />
+    <Compile Include="Controllers\LKL365CController.cs" />
+    <Compile Include="Controllers\LKL365BController.cs" />
+    <Compile Include="Controllers\LKL365AController.cs" />
+    <Compile Include="Controllers\Mega5Controller.cs" />
+    <Compile Include="Controllers\Mega4Controller.cs" />
+    <Compile Include="Controllers\Mega3Controller.cs" />
+    <Compile Include="Controllers\Mega2Controller.cs" />
+    <Compile Include="Controllers\Mega1Controller.cs" />
+    <Compile Include="Controllers\MegaRerunController.cs" />
+    <Compile Include="Controllers\MegaController.cs" />
+    <Compile Include="Controllers\OBET3Controller.cs" />
+    <Compile Include="Controllers\OBET2Controller.cs" />
+    <Compile Include="Controllers\OBET1Controller.cs" />
+    <Compile Include="Controllers\OBETController.cs" />
+    <Compile Include="Controllers\KING855Controller.cs" />
+    <Compile Include="Controllers\DGController.cs" />
+    <Compile Include="Controllers\GFGController.cs" />
+    <Compile Include="Controllers\JDBController.cs" />
+    <Compile Include="Controllers\LKL365Controller.cs" />
+    <Compile Include="Controllers\JiLiController.cs" />
+    <Compile Include="Controllers\PPSlotJob3Controller.cs" />
+    <Compile Include="Controllers\PPSlotJob2Controller.cs" />
+    <Compile Include="Controllers\PPSlotJob1Controller.cs" />
+    <Compile Include="Controllers\PPSlotJobController.cs" />
+    <Compile Include="Controllers\PPSlotController.cs" />
+    <Compile Include="Controllers\PPLiveController.cs" />
+    <Compile Include="Controllers\PragmaticLiveController.cs" />
+    <Compile Include="Controllers\PragmaticSlotController.cs" />
+    <Compile Include="Controllers\PTController.cs" />
+    <Compile Include="Controllers\ScheduleJobController.cs" />
+    <Compile Include="Controllers\EvolutionController.cs" />
+    <Compile Include="Controllers\GameAPIController.cs" />
+    <Compile Include="Controllers\HabaneroController.cs" />
+    <Compile Include="Controllers\KAController.cs" />
+    <Compile Include="Controllers\KISController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MKY888Controller.cs" />
+    <Compile Include="Controllers\SAGController.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\Authenticate.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\Base.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\ChangeBalance.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\PragmaticSeamless.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\GetBalance.cs" />
+    <Compile Include="Controllers\SeamlessWallet\Model\Status.cs" />
+    <Compile Include="Controllers\SexyBackupController.cs" />
+    <Compile Include="Controllers\SexyController.cs" />
+    <Compile Include="Controllers\SpadeFishCallbackController.cs" />
+    <Compile Include="Controllers\SpadeCallbackController.cs" />
+    <Compile Include="Controllers\SpadeGamingController.cs" />
+    <Compile Include="Controllers\SpadeGamingFishController.cs" />
+    <Compile Include="Controllers\V2\Ace333Connector.cs" />
+    <Compile Include="Controllers\V2\AdvantPlayConnector.cs" />
+    <Compile Include="Controllers\V2\AWCFishConnector.cs" />
+    <Compile Include="Controllers\V2\AWCConnector.cs" />
+    <Compile Include="Controllers\V2\BeSoftConnector.cs" />
+    <Compile Include="Controllers\V2\BNGConnector.cs" />
+    <Compile Include="Controllers\V2\AESexyConnector.cs" />
+    <Compile Include="Controllers\V2\AGConnector.cs" />
+    <Compile Include="Controllers\V2\BaseConnector.cs" />
+    <Compile Include="Controllers\V2\BT28WINConnector.cs" />
+    <Compile Include="Controllers\V2\ClotPlayConnector.cs" />
+    <Compile Include="Controllers\V2\CQ9Connector.cs" />
+    <Compile Include="Controllers\V2\CQ9FishConnector.cs" />
+    <Compile Include="Controllers\V2\DCTConnector.cs" />
+    <Compile Include="Controllers\V2\EkorConnector.cs" />
+    <Compile Include="Controllers\V2\AFBConnector.cs" />
+    <Compile Include="Controllers\V2\EVOBTGConnector.cs" />
+    <Compile Include="Controllers\V2\EVONetEntConnector.cs" />
+    <Compile Include="Controllers\V2\EVONLCConnector.cs" />
+    <Compile Include="Controllers\V2\EVORedtigerConnector.cs" />
+    <Compile Include="Controllers\V2\FACHAIFISHConnector.cs" />
+    <Compile Include="Controllers\V2\JDBFishConnector.cs" />
+    <Compile Include="Controllers\V2\JiLiFishConnector.cs" />
+    <Compile Include="Controllers\V2\Kiss918H5Connector.cs" />
+    <Compile Include="Controllers\V2\LIONKINGConnector.cs" />
+    <Compile Include="Controllers\V2\ABSConnector.cs" />
+    <Compile Include="Controllers\V2\Live22Connector.cs" />
+    <Compile Include="Controllers\V2\MegaH5Connector.cs" />
+    <Compile Include="Controllers\V2\MGConnector.cs" />
+    <Compile Include="Controllers\V2\WINFINITYConnector.cs" />
+    <Compile Include="Controllers\V2\MTConnector.cs" />
+    <Compile Include="Controllers\V2\NextSpinConnector.cs" />
+    <Compile Include="Controllers\V2\ArrowEdgeConnector.cs" />
+    <Compile Include="Controllers\V2\BTGConnector.cs" />
+    <Compile Include="Controllers\V2\BTIConnector.cs" />
+    <Compile Include="Controllers\V2\JokerConnector.cs" />
+    <Compile Include="Controllers\V2\OctoPlayConnector.cs" />
+    <Compile Include="Controllers\V2\OnlyPlayConnector.cs" />
+    <Compile Include="Controllers\V2\PlayStarConnector.cs" />
+    <Compile Include="Controllers\V2\PTV2LiveConnector.cs" />
+    <Compile Include="Controllers\V2\PTV2SlotConnector.cs" />
+    <Compile Include="Controllers\V2\PTLiveConnector.cs" />
+    <Compile Include="Controllers\V2\PTSlotConnector.cs" />
+    <Compile Include="Controllers\V2\HackSawConnector.cs" />
+    <Compile Include="Controllers\V2\RelaxConnector.cs" />
+    <Compile Include="Controllers\V2\OBETConnector.cs" />
+    <Compile Include="Controllers\V2\KING855Connector.cs" />
+    <Compile Include="Controllers\V2\DGConnector.cs" />
+    <Compile Include="Controllers\V2\EVOGMConnector.cs" />
+    <Compile Include="Controllers\V2\GPConnector.cs" />
+    <Compile Include="Controllers\V2\BGConnector.cs" />
+    <Compile Include="Controllers\V2\LKL365Connector.cs" />
+    <Compile Include="Controllers\V2\LEGConnector.cs" />
+    <Compile Include="Controllers\V2\JDBConnector.cs" />
+    <Compile Include="Controllers\V2\HabaneroConnector.cs" />
+    <Compile Include="Controllers\V2\IBCConnector.cs" />
+    <Compile Include="Controllers\V2\GFGConnector.cs" />
+    <Compile Include="Controllers\V2\KAConnector.cs" />
+    <Compile Include="Controllers\V2\JiLiConnector.cs" />
+    <Compile Include="Controllers\V2\KISS918Connector.cs" />
+    <Compile Include="Controllers\V2\MEGAConnector.cs" />
+    <Compile Include="Controllers\V2\PPSlotConnector.cs" />
+    <Compile Include="Controllers\V2\PPLiveConnector.cs" />
+    <Compile Include="Controllers\V2\PragmaticLiveConnector.cs" />
+    <Compile Include="Controllers\V2\PragmaticSlotConnector.cs" />
+    <Compile Include="Controllers\V2\PTConnector.cs" />
+    <Compile Include="Controllers\V2\MKY888Connector.cs" />
+    <Compile Include="Controllers\V2\SAGamingConnector.cs" />
+    <Compile Include="Controllers\V2\SAGConnector.cs" />
+    <Compile Include="Controllers\V2\SimplePlayConnector.cs" />
+    <Compile Include="Controllers\V2\SpadeGamingConnector.cs" />
+    <Compile Include="Controllers\V2\SpadeGamingFishConnector.cs" />
+    <Compile Include="Controllers\V2\VBossGDConnector.cs" />
+    <Compile Include="Controllers\V2\VGSConnector.cs" />
+    <Compile Include="Controllers\V2\RocketmanConnector.cs" />
+    <Compile Include="Controllers\V2\VivoConnector.cs" />
+    <Compile Include="Controllers\V2\PegasusConnector.cs" />
+    <Compile Include="Controllers\V2\VPlusConnector.cs" />
+    <Compile Include="Controllers\V2\FACHAIConnector.cs" />
+    <Compile Include="Controllers\V2\VBossConnector.cs" />
+    <Compile Include="Controllers\V2\VPowerFishConnector.cs" />
+    <Compile Include="Controllers\V2\WIN28Connector.cs" />
+    <Compile Include="Controllers\V2\VPowerConnector.cs" />
+    <Compile Include="Controllers\V2\WCasinoConnector.cs" />
+    <Compile Include="Controllers\V2\YeeBetConnector.cs" />
+    <Compile Include="Controllers\PegasusController.cs" />
+    <Compile Include="Controllers\VBossController.cs" />
+    <Compile Include="Controllers\VPlusController.cs" />
+    <Compile Include="Controllers\VPowerFishController.cs" />
+    <Compile Include="Controllers\VPowerNewController.cs" />
+    <Compile Include="Controllers\WCasinoController.cs" />
+    <Compile Include="Controllers\YeeBetController.cs" />
+    <Compile Include="diag.aspx.cs">
+      <DependentUpon>diag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="diag.aspx.designer.cs">
+      <DependentUpon>diag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gamess\Ace333\Ace333.cs" />
+    <Compile Include="Gamess\AdvantPlay\AdvantPlay.cs" />
+    <Compile Include="Gamess\AWC\AWC.cs" />
+    <Compile Include="Gamess\AWC\Models\BaseRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\BaseResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\CheckTransferOperationRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\CheckTransferOperationResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\CreateMemberRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\CreateMemberResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\DepositeRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\DepositeResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\DoLoginAndLaunchGameRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\GetBalanceRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\GetBalanceResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\LoginRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\LoginResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\LogoutRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\LogoutResponse.cs" />
+    <Compile Include="Gamess\AWC\Models\WithdrawRequest.cs" />
+    <Compile Include="Gamess\AWC\Models\WithdrawResponse.cs" />
+    <Compile Include="Gamess\BeSoft\BeSoft.cs" />
+    <Compile Include="Gamess\BeSoft\Models\GetBalanceModels.cs" />
+    <Compile Include="Gamess\BeSoft\Models\GetGameListModels.cs" />
+    <Compile Include="Gamess\BeSoft\Models\GetKeyModels.cs" />
+    <Compile Include="Gamess\BeSoft\Models\KickOutPlayerModels.cs" />
+    <Compile Include="Gamess\BeSoft\Models\WithdrawModels.cs" />
+    <Compile Include="Gamess\BNG\BNG.cs" />
+    <Compile Include="Gamess\ClotPlay\ClotPlay.cs" />
+    <Compile Include="Gamess\ClotPlay\Helpers\ClotPlayHelper.cs" />
+    <Compile Include="Gamess\ClotPlay\Helpers\ClotPlayHttpClient.cs" />
+    <Compile Include="Gamess\ClotPlay\Models\ClotPlayModel.cs" />
+    <Compile Include="Gamess\CQ9Fish\CQ9Fish.cs" />
+    <Compile Include="Gamess\DCT\DCT.cs" />
+    <Compile Include="Gamess\Ekor\Ekor.cs" />
+    <Compile Include="Gamess\EvoGaming\BaseClass.cs" />
+    <Compile Include="Gamess\EvoGaming\CasinoDailyReport.cs" />
+    <Compile Include="Gamess\EvoGaming\CasinoGamesDetail.cs" />
+    <Compile Include="Gamess\EvoGaming\CasinoStreamGamesDetail.cs" />
+    <Compile Include="Gamess\EvoGaming\CasinoStreamGamesDetailV2.cs" />
+    <Compile Include="Gamess\EvoGaming\Constants.cs" />
+    <Compile Include="Gamess\EvoGaming\ErrorResponse.cs" />
+    <Compile Include="Gamess\EvoGaming\EvoGaming.cs" />
+    <Compile Include="Gamess\EvoGaming\GameList.cs" />
+    <Compile Include="Gamess\EvoGaming\GetBalance.cs" />
+    <Compile Include="Gamess\EvoGaming\GetTransaction.cs" />
+    <Compile Include="Gamess\EvoGaming\GetUserDetail.cs" />
+    <Compile Include="Gamess\EvoGaming\PlayerGameDetail.cs" />
+    <Compile Include="Gamess\EvoGaming\Transfer.cs" />
+    <Compile Include="Gamess\EvoGaming\UserAuth.cs" />
+    <Compile Include="Gamess\GFG\GFG.cs" />
+    <Compile Include="Gamess\HackSaw\HackSaw.cs" />
+    <Compile Include="Gamess\JDBFish\JDBFish.cs" />
+    <Compile Include="Gamess\JiLi\JiLi.cs" />
+    <Compile Include="Gamess\Joker\Joker.cs" />
+    <Compile Include="Gamess\Kiss918H5\Kiss918H5.cs" />
+    <Compile Include="Gamess\Live22\Live22.cs" />
+    <Compile Include="Gamess\MegaH5\MegaH5.cs" />
+    <Compile Include="Gamess\MG\MGAPI.cs" />
+    <Compile Include="Gamess\MT\Models\KickOutRequest.cs" />
+    <Compile Include="Gamess\MT\Models\KickOutResponse.cs" />
+    <Compile Include="Gamess\MT\Models\GetBalanceRequest.cs" />
+    <Compile Include="Gamess\MT\Models\GetBalanceResponse.cs" />
+    <Compile Include="Gamess\MT\Models\BaseRequest.cs" />
+    <Compile Include="Gamess\MT\Models\BaseResponse.cs" />
+    <Compile Include="Gamess\MT\Models\CreateUserResponse.cs" />
+    <Compile Include="Gamess\MT\Models\CreateUserRequest.cs" />
+    <Compile Include="Gamess\MT\Models\DepositRequest.cs" />
+    <Compile Include="Gamess\MT\Models\DepositResponse.cs" />
+    <Compile Include="Gamess\MT\Models\GetURLTokenRequest.cs" />
+    <Compile Include="Gamess\MT\Models\GetURLTokenResponse.cs" />
+    <Compile Include="Gamess\MT\Models\LoginRequest.cs" />
+    <Compile Include="Gamess\MT\Models\LoginResponse.cs" />
+    <Compile Include="Gamess\MT\Models\WithdrawRequest.cs" />
+    <Compile Include="Gamess\MT\Models\WithdrawResponse.cs" />
+    <Compile Include="Gamess\MT\MT.cs" />
+    <Compile Include="Gamess\BTG\BTG.cs" />
+    <Compile Include="Gamess\BTG\Models\BaseModels.cs" />
+    <Compile Include="Gamess\BTG\Models\DepositAmountModels.cs" />
+    <Compile Include="Gamess\BTG\Models\EnterLobbyModels.cs" />
+    <Compile Include="Gamess\BTG\Models\GameListModels.cs" />
+    <Compile Include="Gamess\BTG\Models\GetBalanceModels.cs" />
+    <Compile Include="Gamess\BTG\Models\LaunchGameModels.cs" />
+    <Compile Include="Gamess\BTG\Models\QueryBettingRecordModels.cs" />
+    <Compile Include="Gamess\BTG\Models\QueryFinancesModels.cs" />
+    <Compile Include="Gamess\BTG\Models\QueryGameHistoriesModels.cs" />
+    <Compile Include="Gamess\BTG\Models\QueryPlayerFinancesModels.cs" />
+    <Compile Include="Gamess\BTG\Models\QueryPlayerHistoriesModels.cs" />
+    <Compile Include="Gamess\BTG\Models\UserLogoutModels.cs" />
+    <Compile Include="Gamess\BTG\Models\WithdrawAmountModels.cs" />
+    <Compile Include="Gamess\BTG\Models\UserLoginModels.cs" />
+    <Compile Include="Gamess\BTI\BTI.cs" />
+    <Compile Include="Gamess\BTI\Models\CreateUserNewModels.cs" />
+    <Compile Include="Gamess\BTI\Models\DepositModels.cs" />
+    <Compile Include="Gamess\BTI\Models\ErrorModels.cs" />
+    <Compile Include="Gamess\BTI\Models\GetBalanceModels.cs" />
+    <Compile Include="Gamess\BTI\Models\GetBalancesModels.cs" />
+    <Compile Include="Gamess\BTI\Models\GetCustomerAuthTokenModels.cs" />
+    <Compile Include="Gamess\BTI\Models\GetCustomerByMerchantCodeModels.cs" />
+    <Compile Include="Gamess\BTI\Models\WithdrawModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\CreateWalletModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\ErrorModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\FetchWalletModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\GameLaunchModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\GameListModels.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\OctoPlayLobbyGame.cs" />
+    <Compile Include="Gamess\OctoPlay\Models\TransferWalletModels.cs" />
+    <Compile Include="Gamess\OctoPlay\OctoPlay.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\CreateAccountRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\CreateAccountResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\DepositRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\DepositResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\GetBalanceRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\GetBalanceResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\GetEgamesListRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\GetEgamesListResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\StartGameRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\StartGameResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\WithdrawalRequest.cs" />
+    <Compile Include="Gamess\OnlyPlay\Models\WithdrawalResponse.cs" />
+    <Compile Include="Gamess\OnlyPlay\OnlyPlay.cs" />
+    <Compile Include="Gamess\PlayStar\PlayStar.cs" />
+    <Compile Include="Gamess\PPSlot\PPSlot.cs" />
+    <Compile Include="Gamess\Relax\Relax.cs" />
+    <Compile Include="Gamess\SAGaming\SAGAPI.cs" />
+    <Compile Include="Gamess\SimplePlay\SimplePlay.cs" />
+    <Compile Include="Gamess\PEGASUS\PEGASUSAPI.cs" />
+    <Compile Include="Gamess\SpadeGaming\SpadeGaming.cs" />
+    <Compile Include="Gamess\VBoss\VBoss.cs" />
+    <Compile Include="Gamess\VPLUS\VPLUSAPI.cs" />
+    <Compile Include="Gamess\VPOWER\VPOWERAPI.cs" />
+    <Compile Include="Gamess\WCasino\WCasino.cs" />
+    <Compile Include="Gamess\FACHAI\FCAPI.cs" />
+    <Compile Include="Gamess\WIN28\28WINAPI.cs" />
+    <Compile Include="Gamess\WINFINITY\Models\WinfinityModels.cs" />
+    <Compile Include="Gamess\WINFINITY\WINFINITY.cs" />
+    <Compile Include="Gamess\YeeBet\YeeBet.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MegaLogin.ashx.cs">
+      <DependentUpon>MegaLogin.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ABSGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ABSGame_Bet.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ABSGame_Hits.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ABSGame_Ticket.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMJobDate.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGDownloadedFile.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeSoftLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BNGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BNGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BT28WinGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BT28WinGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BT28WinGameResult.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BT28WinGameStrike.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClotPlayLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CQ9FishLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CQ9Game.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CQ9GameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVOBTGLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EvolutionGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EvolutionGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVONetEntLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVONLCLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVORedTigerLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Game.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameApiKey.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameBlockedPlayer.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameCategory.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameDeposit.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameLanguage.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameMapping.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameToken.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameTransferLimit.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameWithdraw.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAccountAllDownline_Result.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GFGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GFGGameList.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GFGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GFGLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GPGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GPGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HabaneroGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HabaneroGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBCBetDetail.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBCBetNumberDetail.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBCBetVirtualSportDetail.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBCGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JDBFishGame.cs" />
+    <Compile Include="Models\JDBGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JDBGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JiLiFishLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JiLiGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JiLiGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KABonusPickGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KAGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KASpinGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\King855Game.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\King855GameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KISGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KISGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KISScoreLog.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LaunchGameTracker.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEGGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LEGGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LionKingGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LionKingGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LKL365Game.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LKL365GameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MegaGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MegaGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MEGAPlayerRerun.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monkey888Game.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monkey888GameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NextSpinGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NextSpinGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObetGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObetGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OctoPlayLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OnlyPlayLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPLiveGameNew.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPSlotGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPSlotGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPSlotGameNew.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PragmaticLiveGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PragmaticLiveGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PragmaticSlotGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PragmaticSlotGameList.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PragmaticSlotGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProviderLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PTGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PTGameTran.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PTSlotGameList.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PTSlotLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PTV2SlotLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuitGameTracker.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelaxGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelaxGameList.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelaxGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelaxLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HackSawGameList.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HackSawLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeamlessGameCredit.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeamlessGameDebit.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeamlessWallet.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SexyBetDetail.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SexyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SexyGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpadeGamingFishLobbyGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpadeGamingGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpadeGamingGameMain.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\VBossEntry.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VBossGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VivoGameRecord.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VivoWinLoseGame.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="Content\lobby-ap.css" />
+    <Content Include="Content\lobby-live22.css" />
+    <Content Include="Content\Lobby3.css" />
+    <Compile Include="Gamess\AFB\AFB.cs" />
+    <Content Include="diag.aspx" />
+    <Content Include="images\bg-landscape.jpg" />
+    <Content Include="images\bg-portrait.jpg" />
+    <Content Include="images\bg-r1.png" />
+    <Content Include="images\hot-games.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loading.png" />
+    <Content Include="images\money.png" />
+    <Content Include="images\no-img.png" />
+    <Content Include="images\side-1.png" />
+    <Content Include="images\side-2.png" />
+    <Content Include="images\side-3.png" />
+    <Content Include="images\slot-games.png" />
+    <Content Include="images\top-1.png" />
+    <Content Include="images\top-2.png" />
+    <Content Include="integration\integrationRedirect.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\LobbyCss.css" />
+    <Content Include="Views\PT\Index.cshtml" />
+    <Content Include="Views\PT\Live.cshtml" />
+    <Content Include="Views\PT\Slot.cshtml" />
+    <Content Include="Views\PT\SlotLobby.cshtml" />
+    <Content Include="Views\MKY888\Lobby.cshtml" />
+    <Content Include="Views\PragmaticSlot\Lobby.cshtml" />
+    <Content Include="Views\PPSlot\Lobby.cshtml" />
+    <Content Include="Views\Relax\Lobby.cshtml" />
+    <Content Include="Views\GFG\Lobby.cshtml" />
+    <Content Include="Views\PT\SlotLobby_20230824.cshtml" />
+    <Content Include="Views\Relax\Lobby_20230824.cshtml" />
+    <Content Include="Views\PPSlot\Lobby_20230824.cshtml" />
+    <Content Include="Views\Live22\Lobby.cshtml" />
+    <Content Include="Views\GFG\Lobby_20230923.cshtml" />
+    <Content Include="Views\AdvantPlay\Lobby.cshtml" />
+    <Content Include="Views\ArrowEdge\Lobby.cshtml" />
+    <Content Include="Views\PlayStar\Lobby.cshtml" />
+    <Content Include="Views\HackSaw\Lobby.cshtml" />
+    <Content Include="Views\VPowerNew\Lobby.cshtml" />
+    <Content Include="Views\VPlus\Lobby.cshtml" />
+    <Content Include="Views\Pegasus\Lobby.cshtml" />
+    <Content Include="Views\Joker\Lobby.cshtml" />
+    <Content Include="Views\Fachai\Lobby.cshtml" />
+    <Content Include="Views\FachaiFish\Lobby.cshtml" />
+    <Content Include="Views\JDBFish\Lobby.cshtml" />
+    <Content Include="Views\JiliFish\Lobby.cshtml" />
+    <Content Include="Views\CQ9Fish\Lobby.cshtml" />
+    <Content Include="Views\VPowerFish\Lobby.cshtml" />
+    <Content Include="Views\SpadeGamingFish\Lobby.cshtml" />
+    <Content Include="Views\EVORedTiger\Lobby.cshtml" />
+    <Content Include="Views\EVONetEnt\Lobby.cshtml" />
+    <Content Include="Views\EVOBTG\Lobby.cshtml" />
+    <Content Include="Views\EVONLC\Lobby.cshtml" />
+    <Content Include="Views\AWCFish\Lobby.cshtml" />
+    <Content Include="Views\ClotPlay\Lobby.cshtml" />
+    <Content Include="Views\OnlyPlay\Lobby.cshtml" />
+    <Content Include="Views\PTV2\Slot.cshtml" />
+    <Content Include="Views\PTV2\Lobby.cshtml" />
+    <Content Include="Views\PTV2\Live.cshtml" />
+    <Content Include="Views\OctoPlay\Lobby.cshtml" />
+    <Content Include="Views\BeSoft\Lobby.cshtml" />
+    <Content Include="Views\MG\Lobby.cshtml" />
+    <Content Include="Views\Network\OutboundIP.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="bin\GameRecord.dll" />
+    <Content Include="bin\GameRecord.pdb" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Logs\dummy.txt" />
+    <Content Include="Models\DBModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+      <LastGenOutput>DBModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+      <LastGenOutput>DBModels.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="file.json" />
+    <EntityDeploy Include="Models\DBModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBModels.edmx.diagram">
+      <DependentUpon>DBModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="Keys\MYRWFF88.key" />
+    <Content Include="Keys\MYRWFF88.p12" />
+    <Content Include="Keys\MYRWFF88.pass" />
+    <Content Include="Keys\MYRWFF88.pem" />
+    <Content Include="MegaLogin.ashx" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord-2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord-3 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord-job - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord-qa - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\c9live-gamerecord-report - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BG\Index.cshtml" />
+    <Content Include="Views\Demo\TestStaging.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AFBConnector\" />
+    <Folder Include="Views\AzureNetwork\" />
+    <Folder Include="Views\BT28WinStrike\" />
+    <Folder Include="Views\BT28Win\" />
+    <Folder Include="Views\BT4D\" />
+    <Folder Include="Views\BTPlayer\" />
+    <Folder Include="Views\DGConnector\" />
+    <Folder Include="Views\GD\" />
+    <Folder Include="Views\HabaneroConnector\" />
+    <Folder Include="Views\IG\" />
+    <Folder Include="Views\JiLiConnector\" />
+    <Folder Include="Views\KAConnector\" />
+    <Folder Include="Views\KA\" />
+    <Folder Include="Views\KIS\" />
+    <Folder Include="Views\SBO\" />
+    <Folder Include="Views\UG\" />
+    <Folder Include="Views\WCasino\" />
+    <Folder Include="Views\YeeBet\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51148</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51148/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

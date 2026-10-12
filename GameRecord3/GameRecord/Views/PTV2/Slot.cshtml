@@ -1,0 +1,60 @@
+﻿@model GameRecord.Models.PTV2Login
+@{
+    ViewBag.Title = "Playtech Slot";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://login-ag.@(Model.MobileHub).com/jswrapper/integration.js.php?casino=@(Model.VirtualDatabase)"></script>
+    <script type="text/javascript">
+        var username = "@Model.PlayerId.ToUpper()";
+        var password = "@Model.Password";
+        var realMode = 1;
+        var language = "@Model.LangCode"; //Please refer to Appendix B
+        var gamecode = "@Model.GameCode"; //Please refer to google sheet link
+        var clientPlatform = "@Model.Platform" // web or mobile
+        var systemid = "@Model.SystemId";
+        var casino = "@Model.VirtualDatabase";
+        var lobby = "@Model.Lobby";
+
+        iapiSetCallout('LoginAndGetTempToken', calloutLogin);
+
+        function login() {
+            iapiLoginAndGetTempToken(username, password, realMode, language, systemid);
+        }
+
+        function calloutLogin(response) {
+            console.log(response);
+            if (response.errorCode) {
+                if (response.errorText !== undefined) {
+                    alert("[" + response.errorCode + "] " + response.errorText.replace("<br>", "\r\n"));
+                }
+                else if (response.playerMessage !== undefined) {
+                    alert("[" + response.errorCode + "] " + response.playerMessage.replace("<br>", "\r\n"));
+                }
+                else {
+                    alert("[" + response.errorCode + "] Login Fail.");
+                }
+            }
+            else {
+                window.location.href = "https://login-ag.@(Model.MobileHub).com/GameLauncher?gameCodeName=" + gamecode + "&username=" + username
+                    + "&tempToken=" + response.sessionToken.sessionToken + "&casino=" + casino + "&clientPlatform=" + clientPlatform + "&language=" + language
+                    + "&playMode=" + realMode + "&deposit=" + "&lobby=" + lobby + "&swipeUpOff=true";
+            }
+        }
+
+        $(document).ready(function () {
+            login();
+        });
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

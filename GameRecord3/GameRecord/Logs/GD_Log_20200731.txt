@@ -1,0 +1,18 @@
+15:30:55.780
+GD/GetJobTime 31/7/2020 3:30:55 PM  String was not recognized as a valid DateTime.
+
+15:31:32.655
+GD/GetJobTime 31/7/2020 3:31:32 PM  String was not recognized as a valid DateTime.
+
+15:31:33.687
+GD/GetGameRecord 31/7/2020 3:31:33 PM  The underlying connection was closed: An unexpected error occurred on a receive.
+
+15:31:46.906
+GD/GetJobTime 31/7/2020 3:31:46 PM  String was not recognized as a valid DateTime.
+
+15:34:00.366
+GD/GetGameRecord 31/7/2020 3:34:00 PM  The underlying connection was closed: An unexpected error occurred on a receive.
+
+15:34:48.414
+GD/GetGameRecord 31/7/2020 3:34:48 PM  The underlying connection was closed: An unexpected error occurred on a receive.
+

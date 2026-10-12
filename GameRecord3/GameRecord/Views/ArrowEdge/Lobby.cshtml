@@ -1,0 +1,155 @@
+﻿@{
+	Layout = null;
+}
+@model GameRecord.Controllers.V2.ArrowEdgeConnector.GameList
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Games</title>
+	<link rel="icon" href="./favicon.ico" type="image/x-icon">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="~/Scripts/LobbyCss.css" />
+</head>
+
+<body class="ppslot">
+	<div class="container-fluid">
+		<div class="row d-flex justify-content-center">
+			<div class="inner-addon left-addon @*w-75*@ mb-3 mt-3">
+				<i class="fa fa-search"></i>
+				<input type="text" id="txtGameName" class="form-control" placeholder="Search" aria-label="search-game-name">
+			</div>
+		</div>
+	</div>
+    <div id="overlay"><img src="~/images/loading.gif" /></div>
+	<hr class="hr1">
+	<div id="games">
+		@if (Model != null && Model.Games.Count > 0)
+        {
+            foreach (var row in Model.Games)
+            {
+				<div class="_game text-center">
+					<img src="@(String.Format(row.image))" alt="" class="img-thumbnail"
+							 onclick="launchGame('@row.id')">
+					<p data-gameid="@row.id">@row.friendlyName</p>
+				</div>
+			}
+
+		}
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+	<script>
+        var timer;
+        $('#txtGameName').keyup(function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                var gameName = $.trim($("#txtGameName").val());
+                var gameNameLength = $("#txtGameName").val().length;
+                if (gameNameLength >= 3 || gameNameLength == 0) {
+                    GetGames(gameName)
+                }
+            }, 500)
+        });
+
+		String.format = function () {
+			var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {
+                var reg = new RegExp("\\{" + i + "\\}", "gm");
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
+        }
+
+        function GetGames(gameName) {
+            var htmlList = "";
+            var SetData = $("#games");
+            var preSetHtml = "<div id='games' class='row'>"
+            $.ajax({
+                type: "POST",
+				url: "/ArrowEdge/SearchGame",
+                data: "{gameName:'" + gameName + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (games) {
+                    if (games != null) {
+                        for (var index = 0; index < games.length; index++) {
+							console.log(games)
+                            var imgUrl = games.image
+                            var Data = "<div class='_game text-center'>" +
+                                "<img src=" + imgUrl + " alt=''class='img-thumbnail' onclick=launchGame("+"'"+games[index].id+"'"+")>" +
+                                "<p data-gameid=" + games[index].id + ">" + games[index].friendlyName + "</p>" +
+                                "</div>";
+                            htmlList = Data + htmlList
+                        }
+                        SetData.replaceWith(preSetHtml + htmlList)
+					}
+
+                    fadeOut();
+                }
+            })
+		}
+
+        function fadeOut() {
+            $("#overlay").fadeOut(300);
+        };
+
+        $(document).ajaxSend(function () {
+            $("#overlay").fadeIn(300);
+        });
+
+        $(document).ready(function () {
+            $('#filter > button').removeClass('btn-primary');
+            $('#filter > button').addClass('btn-outline-primary');
+        });
+
+        $("#filter > button").click(function () {
+            $('#filter > button').removeClass('btn-primary');
+            $('#filter > button').addClass('btn-outline-primary');
+
+            $(this).removeClass('btn-outline-primary');
+            $(this).addClass('btn-primary');
+        });
+
+		function getUrlParameter(name) {
+			console.log(name);
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        function launchGame(gameId) {
+            console.log(gameId)
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '@Url.Action("LaunchDirectGame", "ArrowEdge")',
+                data: {
+                    "username": getUrlParameter('username'),
+                    "gameid": gameId,
+					"langid": getUrlParameter('langid'),
+                    "token": getUrlParameter('token'),
+                    "currency": getUrlParameter('currency'),
+                },
+                success: function (res) {
+                    var data = JSON.parse(res.Data);
+                    if (data && data.ErrorCode == 0) {
+						//window.location.replace(data.url);
+                        window.location.href = data.url;
+						//window.open(data.url);
+                    }
+                }
+            });
+        }
+	</script>
+</body>
+</html>

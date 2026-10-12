@@ -1,0 +1,6 @@
+20:39:04.030
+IG/GetGameRecord WebExp 20/7/2020 8:39:04 PM  The remote server returned an error: (400) Bad Request.
+
+20:40:33.658
+IG/GetGameRecord WebExp 20/7/2020 8:40:33 PM  The remote server returned an error: (400) Bad Request.
+

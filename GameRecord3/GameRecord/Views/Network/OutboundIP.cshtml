@@ -1,0 +1,55 @@
+﻿@model AzureNetworkInfo
+
+<h2>Azure App Service Network Diagnostic</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <td><b>Current Outbound IP</b></td>
+        <td>@Model.OutboundLocalIP</td>
+    </tr>
+
+    <tr>
+        <td><b>Public IP (Internet)</b></td>
+        <td>@Model.PublicIP</td>
+    </tr>
+
+    <tr>
+        <td><b>Azure Outbound IP Pool</b></td>
+        <td>@Model.OutboundIPPool</td>
+    </tr>
+
+    <tr>
+        <td><b>Possible Outbound IPs</b></td>
+        <td>@Model.PossibleOutboundIPs</td>
+    </tr>
+
+    <tr>
+        <td><b>Instance ID</b></td>
+        <td>@Model.InstanceId</td>
+    </tr>
+
+    <tr>
+        <td><b>Region</b></td>
+        <td>@Model.Region</td>
+    </tr>
+
+    <tr>
+        <td><b>Hostname</b></td>
+        <td>@Model.Hostname</td>
+    </tr>
+
+    <tr>
+        <td><b>Site Name</b></td>
+        <td>@Model.SiteName</td>
+    </tr>
+
+    <tr>
+        <td><b>Container / VM</b></td>
+        <td>@Model.ContainerName</td>
+    </tr>
+
+    <tr>
+        <td><b>OS Version</b></td>
+        <td>@Model.OSVersion</td>
+    </tr>
+</table>

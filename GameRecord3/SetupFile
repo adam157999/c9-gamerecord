@@ -1,0 +1,46 @@
+
+GFG 
+{
+   "GFGApiUrl":"http://lxqpai.dyysfjq.com",
+   "GFGCompanyKey":"1784194_gfgtest",
+   "GFGAgentKey" : "1797953",
+   "GFGSecretKey":"ff87380092453fd9c1930f2addccb980",
+   "GFGTimeOutSec":30
+}
+
+
+DG
+{
+   "DGApiUrl":"http://api.dg99web.com",
+   "DGApiKey" : "6dbec4832d4543d0ba18426b0d0a0c3a",
+   "DGAgentName":"DGTE01053S",
+   "DGRandom" : "1237807asjkdbjkasb9"
+   "DGTimeOutSec":30
+}
+
+
+Habanero
+{
+   "HabaneroApiUrl":"https://ws-test.insvr.com/jsonapi/",
+   "HabaneroGameUrl" : "6dbec4832d4543d0ba18426b0d0a0c3a",
+   "HabaneroBrandId":"0fb17c2-e351-ed11-ade6-0050f238e028",
+   "HabaneroApiKey" : "247B141C-CD48-42B8-848B-498074DA94F6"
+   "HabaneroTimeOutSec":30
+}
+
+
+Jili
+{
+   "JiLiApiUrl":"https://uat-wb-api.jlfafafa2.com/api1/",
+   "JiLiAgentId":"ZF267_aone_MYR",
+   "JiLiAgentKey" : "2adca942c59257ae603ab4fd84d7ed14fc45a054"
+   "JiLiTimeOutSec":30
+}
+
+
+Pragmatic
+{
+   "PragmaticApiUrl":"https://api.prerelease-env.biz/",
+   "PragmaticSecretKey" : "testKey"
+   "PragmaticTimeOutSec":30
+}

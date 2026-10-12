@@ -1,0 +1,70 @@
+﻿.live22 #games {
+    padding:15px;
+}
+.live22 #games img {
+    cursor:pointer;
+}
+.live22 .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.live22 .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.live22 .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.live22 .btns button.btn-outline-primary {
+    border:0;
+}
+.live22 .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.live22 #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.live22 ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.live22 ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .live22 #games {
+        display: block;
+        text-align:center;
+    }
+    .live22 ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.live22 #overlay {
+    display:none;
+}
+.live22 #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}

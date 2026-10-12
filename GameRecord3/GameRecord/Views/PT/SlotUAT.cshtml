@@ -1,0 +1,65 @@
+﻿@{
+	Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta content="true" name="HandheldFriendly" />
+	<meta content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1" name="viewport" />
+	<title>HTML5 Login</title>
+
+	@*<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>*@
+	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="https://login.luckydragon88.com/jswrapper/integration.js.php?casino=fourblessings88"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			login();
+		});
+
+		iapiSetCallout('Login', calloutLogin);
+		iapiSetCallout('GetTemporaryAuthenticationToken', calloutGetTemporaryAuthenticationToken);
+
+		function getUrlParameter(name) {
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		};
+
+		function login() {
+			iapiSetClientPlatform("mobile&deliveryPlatform=HTML5");
+			var realMode = 1;
+			iapiLogin(getUrlParameter('playerName'), "abc456123", realMode, "en");
+		}
+
+		function calloutLogin(response) {
+			if (response.errorCode) {
+				alert("Login failed. " + response.playerMessage + " Error code: " + response.errorCode);
+			}
+			else {
+				var realMode = 1
+				var systemId = 424;
+				iapiRequestTemporaryToken(realMode, systemId, 'GamePlay');
+			}
+		}
+
+		function launchMobileClient(temptoken) {
+			var clientUrl = 'https://hub.ld177788.com/igaming/?gameId=' + getUrlParameter('gameID') + '&real=1&username=' + getUrlParameter('playerName') + '&lang=' + getUrlParameter('lang') + '&tempToken=' + temptoken;
+			clientUrl = clientUrl + "&lobby=" + encodeURIComponent(window.location.origin + "/PT/SlotLobby?playerName=" + getUrlParameter('playerName'));
+			document.location = clientUrl;
+		}
+
+		function calloutGetTemporaryAuthenticationToken(response) {
+			if (response.errorCode) {
+				alert("Token failed. " + response.playerMessage + " Error code: " + response.errorCode);
+			}
+			else {
+				launchMobileClient(response.sessionToken.sessionToken);
+			}
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

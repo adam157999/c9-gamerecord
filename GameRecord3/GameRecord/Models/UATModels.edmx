@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Bingo_stagingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fId" Type="varchar" MaxLength="255" />
+          <Property Name="AgentID" Type="varchar" MaxLength="30" />
+          <Property Name="GameCode" Type="varchar" MaxLength="30" />
+          <Property Name="Account" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="varchar" MaxLength="30" />
+          <Property Name="OpenType" Type="varchar" MaxLength="50" />
+          <Property Name="TotalPlay" Type="money" />
+          <Property Name="TotalWin" Type="money" />
+          <Property Name="Credit" Type="money" />
+          <Property Name="time" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ADMJobDate">
+          <Key>
+            <PropertyRef Name="GameProvider" />
+          </Key>
+          <Property Name="GameProvider" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JobStart" Type="datetime" />
+          <Property Name="JobEnd" Type="datetime" />
+          <Property Name="Interval" Type="int" />
+          <Property Name="LastRunTillDate" Type="datetime" />
+          <Property Name="LastVersionKey" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="TimeZone" Type="int" />
+        </EntityType>
+        <EntityType Name="BGGame">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="fId" Type="varchar" MaxLength="255" />
+          <Property Name="orderId" Type="bigint" Nullable="false" />
+          <Property Name="sn" Type="varchar" MaxLength="4" />
+          <Property Name="uid" Type="bigint" />
+          <Property Name="loginId" Type="varchar" MaxLength="50" />
+          <Property Name="moduleId" Type="int" />
+          <Property Name="moduleName" Type="nvarchar" MaxLength="32" />
+          <Property Name="gameId" Type="int" />
+          <Property Name="gameName" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderStatus" Type="int" />
+          <Property Name="bAmount" Type="float" />
+          <Property Name="aAmount" Type="float" />
+          <Property Name="orderFrom" Type="int" />
+          <Property Name="orderTime" Type="datetime" />
+          <Property Name="lastUpdateTime" Type="datetime" />
+          <Property Name="fromIp" Type="varchar" MaxLength="32" />
+          <Property Name="issueId" Type="varchar" MaxLength="32" />
+          <Property Name="playId" Type="varchar" MaxLength="32" />
+          <Property Name="playName" Type="nvarchar" MaxLength="50" />
+          <Property Name="playNameEn" Type="varchar" MaxLength="32" />
+          <Property Name="validBet" Type="float" />
+          <Property Name="payment" Type="float" />
+          <Property Name="betContent" Type="nvarchar" MaxLength="255" />
+          <Property Name="Total" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="noComm" Type="int" />
+        </EntityType>
+        <EntityType Name="BGGameMain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="random" Type="varchar" MaxLength="150" />
+          <Property Name="error" Type="varchar" MaxLength="255" />
+          <Property Name="total" Type="int" />
+          <Property Name="pageIndex" Type="int" />
+          <Property Name="pageSize" Type="int" />
+          <Property Name="startTime" Type="datetime" />
+          <Property Name="endTime" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EvolutionGame">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="playerId" />
+            <PropertyRef Name="betCode" />
+            <PropertyRef Name="betTransactionId" />
+          </Key>
+          <Property Name="fId" Type="varchar" MaxLength="255" />
+          <Property Name="uuid" Type="varchar" MaxLength="100" />
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="date" Type="date" />
+          <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="startedAt" Type="datetime" />
+          <Property Name="settledAt" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="gameType" Type="varchar" MaxLength="50" />
+          <Property Name="gameSubType" Type="varchar" MaxLength="50" />
+          <Property Name="tableId" Type="varchar" MaxLength="50" />
+          <Property Name="tableName" Type="nvarchar" MaxLength="100" />
+          <Property Name="dealerUid" Type="nvarchar" MaxLength="100" />
+          <Property Name="dealerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="currency" Type="varchar" MaxLength="5" />
+          <Property Name="wager" Type="money" />
+          <Property Name="payout" Type="money" />
+          <Property Name="casinoId" Type="varchar" MaxLength="100" />
+          <Property Name="playerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="screenName" Type="nvarchar" MaxLength="50" />
+          <Property Name="sessionId" Type="varchar" MaxLength="50" />
+          <Property Name="casinoSessionId" Type="varchar" MaxLength="50" />
+          <Property Name="participantCurrency" Type="varchar" MaxLength="5" />
+          <Property Name="betCoverage" Type="nvarchar(max)" />
+          <Property Name="bets" Type="nvarchar(max)" />
+          <Property Name="betCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="betStake" Type="money" />
+          <Property Name="betPayout" Type="money" />
+          <Property Name="betPlacedOn" Type="datetime" />
+          <Property Name="betDescription" Type="nvarchar(max)" />
+          <Property Name="betTransactionId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="configOverlays" Type="nvarchar(max)" />
+          <Property Name="playMode" Type="varchar" MaxLength="20" />
+          <Property Name="channel" Type="varchar" MaxLength="20" />
+          <Property Name="os" Type="varchar" MaxLength="200" />
+          <Property Name="device" Type="varchar" MaxLength="200" />
+          <Property Name="seats" Type="nvarchar(max)" />
+          <Property Name="decisions" Type="nvarchar(max)" />
+          <Property Name="sideBetPlayerPair" Type="nvarchar(max)" />
+          <Property Name="sideBetBankerPair" Type="nvarchar(max)" />
+          <Property Name="sideBetPerfectPair" Type="nvarchar(max)" />
+          <Property Name="sideBetEitherPair" Type="nvarchar(max)" />
+          <Property Name="sideBetPlayerBonus" Type="nvarchar(max)" />
+          <Property Name="sideBetBankerBonus" Type="nvarchar(max)" />
+          <Property Name="sideBetSuperSix" Type="nvarchar(max)" />
+          <Property Name="sideBetAABonus" Type="nvarchar(max)" />
+          <Property Name="sideBet5p1" Type="nvarchar(max)" />
+          <Property Name="sideBetPairPlus" Type="nvarchar(max)" />
+          <Property Name="sideBet6CardBonus" Type="nvarchar(max)" />
+          <Property Name="sideBetPairOrBetter" Type="nvarchar(max)" />
+          <Property Name="sideBetTrips" Type="nvarchar(max)" />
+          <Property Name="sideBetBestFive" Type="nvarchar(max)" />
+          <Property Name="suitedTie" Type="nvarchar(max)" />
+          <Property Name="result" Type="nvarchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EvolutionGameMain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Msg" Type="nvarchar(max)" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GameMapping">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" />
+          <Property Name="GamePlayerID" Type="varchar" MaxLength="150" />
+          <Property Name="GamePassword" Type="varchar" MaxLength="150" />
+          <Property Name="PlayerID" Type="varchar" MaxLength="150" />
+          <Property Name="Currency" Type="varchar" MaxLength="5" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="GameTransferLimit">
+          <Key>
+            <PropertyRef Name="Game" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MinAmount" Type="money" />
+          <Property Name="MaxAmount" Type="money" />
+          <Property Name="Currency" Type="varchar" MaxLength="5" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TPGGame">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="fId" Type="varchar" MaxLength="255" />
+          <Property Name="TransactionID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="OperatorID" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="30" />
+          <Property Name="Currency" Type="varchar" MaxLength="5" />
+          <Property Name="LogType" Type="int" />
+          <Property Name="GameType" Type="int" />
+          <Property Name="GameTheme" Type="int" />
+          <Property Name="GameName" Type="varchar" MaxLength="100" />
+          <Property Name="GameClientPlatform" Type="int" />
+          <Property Name="PlatformName" Type="varchar" MaxLength="20" />
+          <Property Name="IsTestAccount" Type="bit" />
+          <Property Name="Completed" Type="bit" />
+          <Property Name="TotalDeductAmount" Type="money" />
+          <Property Name="TotalBetAmount" Type="money" />
+          <Property Name="TotalTurnover" Type="money" />
+          <Property Name="TotalPayoutAmount" Type="money" />
+          <Property Name="BoosterPrice" Type="money" />
+          <Property Name="TransactionDetail" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TPGGameMain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OperatorId" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Error" Type="varchar(max)" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_EvolutionGame_EvolutionGameMain">
+          <End Role="EvolutionGameMain" Type="Self.EvolutionGameMain" Multiplicity="0..1" />
+          <End Role="EvolutionGame" Type="Self.EvolutionGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvolutionGameMain">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EvolutionGame">
+              <PropertyRef Name="fId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Bingo_stagingModelStoreContainer">
+          <EntitySet Name="ACGame" EntityType="Self.ACGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADMJobDate" EntityType="Self.ADMJobDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BGGame" EntityType="Self.BGGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BGGameMain" EntityType="Self.BGGameMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvolutionGame" EntityType="Self.EvolutionGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvolutionGameMain" EntityType="Self.EvolutionGameMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameMapping" EntityType="Self.GameMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameTransferLimit" EntityType="Self.GameTransferLimit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPGGame" EntityType="Self.TPGGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPGGameMain" EntityType="Self.TPGGameMain" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EvolutionGame_EvolutionGameMain" Association="Self.FK_EvolutionGame_EvolutionGameMain">
+            <End Role="EvolutionGameMain" EntitySet="EvolutionGameMain" />
+            <End Role="EvolutionGame" EntitySet="EvolutionGame" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bingo_stagingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACGameUAT">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AgentID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GameCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OpenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPlay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalWin" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Credit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Bingo_stagingConn" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACGameUATs" EntityType="Bingo_stagingModel.ACGameUAT" />
+          <EntitySet Name="GameMappingUATs" EntityType="Bingo_stagingModel.GameMappingUAT" />
+          <EntitySet Name="GameTransferLimitUATs" EntityType="Bingo_stagingModel.GameTransferLimitUAT" />
+          <EntitySet Name="ADMJobDateUATs" EntityType="Bingo_stagingModel.ADMJobDateUAT" />
+          <EntitySet Name="BGGameUATs" EntityType="Bingo_stagingModel.BGGameUAT" />
+          <EntitySet Name="BGGameMainUATs" EntityType="Bingo_stagingModel.BGGameMainUAT" />
+          <EntitySet Name="EvolutionGameUATs" EntityType="Bingo_stagingModel.EvolutionGameUAT" />
+          <EntitySet Name="EvolutionGameMainUATs" EntityType="Bingo_stagingModel.EvolutionGameMainUAT" />
+          <EntitySet Name="TPGGameUATs" EntityType="Bingo_stagingModel.TPGGameUAT" />
+          <EntitySet Name="TPGGameMainUATs" EntityType="Bingo_stagingModel.TPGGameMainUAT" />
+          <AssociationSet Name="FK_EvolutionGame_EvolutionGameMain" Association="Bingo_stagingModel.FK_EvolutionGame_EvolutionGameMain">
+            <End Role="EvolutionGameMain" EntitySet="EvolutionGameMainUATs" />
+            <End Role="EvolutionGame" EntitySet="EvolutionGameUATs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GameMappingUAT">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GamePlayerID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="GamePassword" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PlayerID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="GameTransferLimitUAT">
+          <Key>
+            <PropertyRef Name="Game" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Game" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MinAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaxAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ADMJobDateUAT">
+          <Key>
+            <PropertyRef Name="GameProvider" />
+          </Key>
+          <Property Name="GameProvider" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobStart" Type="DateTime" Precision="3" />
+          <Property Name="JobEnd" Type="DateTime" Precision="3" />
+          <Property Name="Interval" Type="Int32" />
+          <Property Name="LastRunTillDate" Type="DateTime" Precision="3" />
+          <Property Name="LastVersionKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="TimeZone" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BGGameUAT">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="fId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="orderId" Type="Int64" Nullable="false" />
+          <Property Name="sn" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="uid" Type="Int64" />
+          <Property Name="loginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="moduleId" Type="Int32" />
+          <Property Name="moduleName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="gameId" Type="Int32" />
+          <Property Name="gameName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderStatus" Type="Int32" />
+          <Property Name="bAmount" Type="Double" />
+          <Property Name="aAmount" Type="Double" />
+          <Property Name="orderFrom" Type="Int32" />
+          <Property Name="orderTime" Type="DateTime" Precision="3" />
+          <Property Name="lastUpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="fromIp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="issueId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="playId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="playName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="playNameEn" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="validBet" Type="Double" />
+          <Property Name="payment" Type="Double" />
+          <Property Name="betContent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="noComm" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BGGameMainUAT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="random" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="error" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="pageIndex" Type="Int32" />
+          <Property Name="pageSize" Type="Int32" />
+          <Property Name="startTime" Type="DateTime" Precision="3" />
+          <Property Name="endTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EvolutionGameUAT">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="playerId" />
+            <PropertyRef Name="betCode" />
+            <PropertyRef Name="betTransactionId" />
+          </Key>
+          <Property Name="fId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="startedAt" Type="DateTime" Precision="3" />
+          <Property Name="settledAt" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gameType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gameSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tableId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tableName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dealerUid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="wager" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="payout" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="casinoId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="playerId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="screenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casinoSessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="participantCurrency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="betCoverage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bets" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="betCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="betStake" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="betPayout" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="betPlacedOn" Type="DateTime" Precision="3" />
+          <Property Name="betDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="betTransactionId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="configOverlays" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="playMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="channel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="os" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="device" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="seats" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="decisions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetPlayerPair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetBankerPair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetPerfectPair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetEitherPair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetPlayerBonus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetBankerBonus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetSuperSix" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetAABonus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBet5p1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetPairPlus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBet6CardBonus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetPairOrBetter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetTrips" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sideBetBestFive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="suitedTie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EvolutionGameMain" Relationship="Bingo_stagingModel.FK_EvolutionGame_EvolutionGameMain" FromRole="EvolutionGame" ToRole="EvolutionGameMain" />
+        </EntityType>
+        <EntityType Name="EvolutionGameMainUAT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EvolutionGames" Relationship="Bingo_stagingModel.FK_EvolutionGame_EvolutionGameMain" FromRole="EvolutionGameMain" ToRole="EvolutionGame" />
+        </EntityType>
+        <EntityType Name="TPGGameUAT">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="fId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="OperatorID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="LogType" Type="Int32" />
+          <Property Name="GameType" Type="Int32" />
+          <Property Name="GameTheme" Type="Int32" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GameClientPlatform" Type="Int32" />
+          <Property Name="PlatformName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsTestAccount" Type="Boolean" />
+          <Property Name="Completed" Type="Boolean" />
+          <Property Name="TotalDeductAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalBetAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalTurnover" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPayoutAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BoosterPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TransactionDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TPGGameMainUAT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorId" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Error" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_EvolutionGame_EvolutionGameMain">
+          <End Type="Bingo_stagingModel.EvolutionGameMainUAT" Role="EvolutionGameMain" Multiplicity="0..1" />
+          <End Type="Bingo_stagingModel.EvolutionGameUAT" Role="EvolutionGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvolutionGameMain">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EvolutionGame">
+              <PropertyRef Name="fId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Bingo_stagingModelStoreContainer" CdmEntityContainer="Bingo_stagingConn">
+          <EntitySetMapping Name="ACGameUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.ACGameUAT">
+              <MappingFragment StoreEntitySet="ACGame">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OpenType" ColumnName="OpenType" />
+                <ScalarProperty Name="TotalPlay" ColumnName="TotalPlay" />
+                <ScalarProperty Name="TotalWin" ColumnName="TotalWin" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameMappingUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.GameMappingUAT">
+              <MappingFragment StoreEntitySet="GameMapping">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="GamePassword" ColumnName="GamePassword" />
+                <ScalarProperty Name="GamePlayerID" ColumnName="GamePlayerID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameTransferLimitUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.GameTransferLimitUAT">
+              <MappingFragment StoreEntitySet="GameTransferLimit">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMJobDateUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.ADMJobDateUAT">
+              <MappingFragment StoreEntitySet="ADMJobDate">
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastVersionKey" ColumnName="LastVersionKey" />
+                <ScalarProperty Name="LastRunTillDate" ColumnName="LastRunTillDate" />
+                <ScalarProperty Name="Interval" ColumnName="Interval" />
+                <ScalarProperty Name="JobEnd" ColumnName="JobEnd" />
+                <ScalarProperty Name="JobStart" ColumnName="JobStart" />
+                <ScalarProperty Name="GameProvider" ColumnName="GameProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BGGameUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.BGGameUAT">
+              <MappingFragment StoreEntitySet="BGGame">
+                <ScalarProperty Name="noComm" ColumnName="noComm" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="betContent" ColumnName="betContent" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="validBet" ColumnName="validBet" />
+                <ScalarProperty Name="playNameEn" ColumnName="playNameEn" />
+                <ScalarProperty Name="playName" ColumnName="playName" />
+                <ScalarProperty Name="playId" ColumnName="playId" />
+                <ScalarProperty Name="issueId" ColumnName="issueId" />
+                <ScalarProperty Name="fromIp" ColumnName="fromIp" />
+                <ScalarProperty Name="lastUpdateTime" ColumnName="lastUpdateTime" />
+                <ScalarProperty Name="orderTime" ColumnName="orderTime" />
+                <ScalarProperty Name="orderFrom" ColumnName="orderFrom" />
+                <ScalarProperty Name="aAmount" ColumnName="aAmount" />
+                <ScalarProperty Name="bAmount" ColumnName="bAmount" />
+                <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+                <ScalarProperty Name="gameName" ColumnName="gameName" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="moduleName" ColumnName="moduleName" />
+                <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BGGameMainUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.BGGameMainUAT">
+              <MappingFragment StoreEntitySet="BGGameMain">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="pageSize" ColumnName="pageSize" />
+                <ScalarProperty Name="pageIndex" ColumnName="pageIndex" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="error" ColumnName="error" />
+                <ScalarProperty Name="random" ColumnName="random" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvolutionGameUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.EvolutionGameUAT">
+              <MappingFragment StoreEntitySet="EvolutionGame">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="suitedTie" ColumnName="suitedTie" />
+                <ScalarProperty Name="sideBetBestFive" ColumnName="sideBetBestFive" />
+                <ScalarProperty Name="sideBetTrips" ColumnName="sideBetTrips" />
+                <ScalarProperty Name="sideBetPairOrBetter" ColumnName="sideBetPairOrBetter" />
+                <ScalarProperty Name="sideBet6CardBonus" ColumnName="sideBet6CardBonus" />
+                <ScalarProperty Name="sideBetPairPlus" ColumnName="sideBetPairPlus" />
+                <ScalarProperty Name="sideBet5p1" ColumnName="sideBet5p1" />
+                <ScalarProperty Name="sideBetAABonus" ColumnName="sideBetAABonus" />
+                <ScalarProperty Name="sideBetSuperSix" ColumnName="sideBetSuperSix" />
+                <ScalarProperty Name="sideBetBankerBonus" ColumnName="sideBetBankerBonus" />
+                <ScalarProperty Name="sideBetPlayerBonus" ColumnName="sideBetPlayerBonus" />
+                <ScalarProperty Name="sideBetEitherPair" ColumnName="sideBetEitherPair" />
+                <ScalarProperty Name="sideBetPerfectPair" ColumnName="sideBetPerfectPair" />
+                <ScalarProperty Name="sideBetBankerPair" ColumnName="sideBetBankerPair" />
+                <ScalarProperty Name="sideBetPlayerPair" ColumnName="sideBetPlayerPair" />
+                <ScalarProperty Name="decisions" ColumnName="decisions" />
+                <ScalarProperty Name="seats" ColumnName="seats" />
+                <ScalarProperty Name="device" ColumnName="device" />
+                <ScalarProperty Name="os" ColumnName="os" />
+                <ScalarProperty Name="channel" ColumnName="channel" />
+                <ScalarProperty Name="playMode" ColumnName="playMode" />
+                <ScalarProperty Name="configOverlays" ColumnName="configOverlays" />
+                <ScalarProperty Name="betTransactionId" ColumnName="betTransactionId" />
+                <ScalarProperty Name="betDescription" ColumnName="betDescription" />
+                <ScalarProperty Name="betPlacedOn" ColumnName="betPlacedOn" />
+                <ScalarProperty Name="betPayout" ColumnName="betPayout" />
+                <ScalarProperty Name="betStake" ColumnName="betStake" />
+                <ScalarProperty Name="betCode" ColumnName="betCode" />
+                <ScalarProperty Name="bets" ColumnName="bets" />
+                <ScalarProperty Name="betCoverage" ColumnName="betCoverage" />
+                <ScalarProperty Name="participantCurrency" ColumnName="participantCurrency" />
+                <ScalarProperty Name="casinoSessionId" ColumnName="casinoSessionId" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="screenName" ColumnName="screenName" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="casinoId" ColumnName="casinoId" />
+                <ScalarProperty Name="payout" ColumnName="payout" />
+                <ScalarProperty Name="wager" ColumnName="wager" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="dealerName" ColumnName="dealerName" />
+                <ScalarProperty Name="dealerUid" ColumnName="dealerUid" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="tableId" ColumnName="tableId" />
+                <ScalarProperty Name="gameSubType" ColumnName="gameSubType" />
+                <ScalarProperty Name="gameType" ColumnName="gameType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="settledAt" ColumnName="settledAt" />
+                <ScalarProperty Name="startedAt" ColumnName="startedAt" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvolutionGameMainUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.EvolutionGameMainUAT">
+              <MappingFragment StoreEntitySet="EvolutionGameMain">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPGGameUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.TPGGameUAT">
+              <MappingFragment StoreEntitySet="TPGGame">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TransactionDetail" ColumnName="TransactionDetail" />
+                <ScalarProperty Name="BoosterPrice" ColumnName="BoosterPrice" />
+                <ScalarProperty Name="TotalPayoutAmount" ColumnName="TotalPayoutAmount" />
+                <ScalarProperty Name="TotalTurnover" ColumnName="TotalTurnover" />
+                <ScalarProperty Name="TotalBetAmount" ColumnName="TotalBetAmount" />
+                <ScalarProperty Name="TotalDeductAmount" ColumnName="TotalDeductAmount" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="IsTestAccount" ColumnName="IsTestAccount" />
+                <ScalarProperty Name="PlatformName" ColumnName="PlatformName" />
+                <ScalarProperty Name="GameClientPlatform" ColumnName="GameClientPlatform" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="GameTheme" ColumnName="GameTheme" />
+                <ScalarProperty Name="GameType" ColumnName="GameType" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPGGameMainUATs">
+            <EntityTypeMapping TypeName="Bingo_stagingModel.TPGGameMainUAT">
+              <MappingFragment StoreEntitySet="TPGGameMain">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

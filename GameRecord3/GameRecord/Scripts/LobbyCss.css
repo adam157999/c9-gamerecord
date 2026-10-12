@@ -1,0 +1,343 @@
+﻿hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 150px;
+}
+
+.inner-addon {
+    position: relative;
+}
+
+    .inner-addon .fa {
+        position: absolute;
+        padding: 10px;
+        pointer-events: none;
+        left: 10px;
+    }
+
+    .inner-addon input {
+        padding-left: 30px;
+        border-radius: 10px;
+    }
+
+#filter button {
+    width: 100%;
+    padding: 5px;
+    margin: 1px 5px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0,0,0,0.6);
+}
+
+.cv-spinner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px #ddd solid;
+    border-top: 4px #2e93e6 solid;
+    border-radius: 50%;
+    animation: sp-anime 0.8s infinite linear;
+}
+
+.custom {
+    width: 90px !important;
+    border-radius: 0.65em !important;
+}
+
+@@keyframes sp-anime {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 1.5rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.is-hide {
+    display: none;
+}
+
+.ppslot #games {
+    padding:15px;
+}
+.ppslot .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.ppslot .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.ppslot .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.ppslot .btns button.btn-outline-primary {
+    border:0;
+}
+.ppslot .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.ppslot #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.ppslot ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.ppslot ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .ppslot #games {
+        display: block;
+        text-align:center;
+    }
+    .ppslot ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.ppslot #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}
+
+.pt #games {
+    padding:15px;
+}
+.pt .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.pt .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.pt .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.pt .btns button.btn-outline-primary {
+    border:0;
+}
+.pt .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.pt #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.pt ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.pt ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .pt #games {
+        display: block;
+        text-align:center;
+    }
+    .pt ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.pt #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}
+
+.relax #games {
+    padding:15px;
+}
+.relax .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.relax .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.relax .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.relax .btns button.btn-outline-primary {
+    border:0;
+}
+.relax .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.relax #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+    width:100%
+}
+.relax ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.relax ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .relax #games {
+        display: block;
+        text-align:center;
+    }
+    .relax ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.relax #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}
+
+.gfg #games {
+    padding:15px;
+}
+.gfg .btns button {
+    border:0;
+    background-color:transparent!important;
+    border-radius:0!important;
+    color:#6fc9be;
+    font-size:15px;
+    font-weight:bold;
+    outline:none;
+}
+.gfg .btns button.btn-primary {
+    border-bottom:2px solid #6fc9be;
+}
+.gfg .btns button.btn-primary:focus {
+    box-shadow:unset;
+}
+.gfg .btns button.btn-outline-primary {
+    border:0;
+}
+.gfg .hr1 {
+    height:1px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.gfg #games {
+    /*border:1px solid red;*/
+    display: grid;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.gfg ._game {
+    /*border:1px solid orange;*/
+    padding-left:0;
+    padding-right:0;
+    vertical-align:top;
+    /*display:inline-block;
+    width:120px;*/
+
+    font-size:0;
+}
+.gfg ._game p {
+    font-size:13px;
+}
+@media screen and (min-width: 576px) {
+    .gfg #games {
+        display: block;
+        text-align:center;
+    }
+    .gfg ._game {
+        display:inline-block;
+        width:120px;
+    }
+}
+.gfg #overlay img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100px;
+}

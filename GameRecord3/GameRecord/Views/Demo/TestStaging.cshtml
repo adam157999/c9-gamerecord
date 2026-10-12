@@ -1,0 +1,310 @@
+﻿<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<head>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <form id="form1" class="form-horizontal" action="/Demo/TestStaging" method="post">
+        <div class="row">
+            <div class="col-md-2">Provider</div>
+            <div class="col-md-4">
+                <select class="form-control" name="provider" onchange="this.form.submit();">
+                    <option value="">-- Select --</option>
+                    @foreach (GameRecord.Models.GameApiKey c in ViewBag.Provider)
+                    {
+                        if (ViewBag.Data != null && ViewBag.Data.provider == c.GameID)
+                        {
+                            <option value="@Html.Raw(c.GameID)" selected>@Html.Raw(c.GameID)</option>
+                        }
+                        else
+                        {
+                            <option value="@Html.Raw(c.GameID)">@Html.Raw(c.GameID)</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        @if (ViewBag.Data != null)
+        {
+            <div class="row">
+                <div class="col-md-2">Api Acccount</div>
+                <div class="col-md-4">
+                    <table class="table table-bordered table-condensed" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="col-md-4">Key</th>
+                                <th class="col-md-6">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.Data.providerConfig != null)
+                            {
+                                foreach (var c in ViewBag.Data.providerConfig)
+                                {
+                                    <tr>
+                                        <td>@Html.Raw(c.Name)</td>
+                                        <td>@Html.Raw(c.Value)</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    @*<div style="white-space: pre">@ViewBag.Data.providerConfig</div>*@
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">Currency</div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="currency" value="@ViewBag.Data.currency" />
+                </div>
+            </div>
+        }
+
+    <div class="row">
+
+        <a id="btnRegister"></a>
+
+        <fieldset>
+            <legend><a id="btnRegister">Register</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">Player ID</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerId1" value="@ViewBag.Data.playerId1" />
+                    </div>
+                    <div class="col-md-12">Player Name</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerName1" value="@ViewBag.Data.playerName1" />
+                    </div>
+                    <div class="col-md-12">Password</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="password1" value="@ViewBag.Data.password1" />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" name="btnRegister" class="btn btn-primary" value="Register" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-4">
+                        <span>@ViewBag.Data.status1</span>
+                    </div>
+                    <div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request1</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response1</textarea>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <br />
+
+
+        <fieldset>
+            <legend><a id="btnGetBalance">Get Balance</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">Player ID</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerId2" value="@ViewBag.Data.playerId2" />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" name="btnGetBalance" class="btn btn-primary" value="Get Balance" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-4">
+                        <span>@ViewBag.Data.status2</span>
+                    </div>
+                    <div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request2</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response2</textarea>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <br />
+        <a id="btnDeposit"></a>
+
+        <fieldset>
+            <legend><a id="btnDeposit">Deposit</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">Player ID</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerId3" value="@ViewBag.Data.playerId3" />
+                    </div>
+                    <div class="col-md-12">Amount</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="amount3" value="@ViewBag.Data.amount3" />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" name="btnDeposit" class="btn btn-primary" value="Deposit" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-4">
+                        <span>@ViewBag.Data.status3</span>
+                    </div>
+                    <div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request3</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response3</textarea>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <br />
+        <a id="btnWithdraw"></a>
+
+        <fieldset>
+            <legend><a id="btnWithdraw">Withdraw</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">Player ID</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerId4" value="@ViewBag.Data.playerId4" />
+                    </div>
+                    <div class="col-md-12">Amount</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="amount4" value="@ViewBag.Data.amount4" />
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" name="btnWithdraw" class="btn btn-primary" value="Withdraw" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-4">
+                        <span>@ViewBag.Data.status4</span>
+                    </div>
+                    <div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request4</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response4</textarea>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <br />
+
+
+        <fieldset>
+            <legend><a id="btnOpenGame">Open Game</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">Player ID</div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="playerId5" value="@ViewBag.Data.playerId5" />
+                    </div>
+                    <div class="col-md-12">Language</div>
+                    <div class="col-md-12">
+                        <select class="form-control" name="language5">
+                            <option value="en-US" selected>en-US</option>
+                            <option value="zh-CN">zh-CN</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">Device</div>
+                    <div class="col-md-12">
+                        <select class="form-control" name="device5">
+                            <option value="Mobile" selected>Mobile</option>
+                            <option value="Desktop">Desktop</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" name="btnOpenGame" class="btn btn-primary" value="Open Game" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-10">
+                        <span>@ViewBag.Data.status5</span>
+                    </div>
+                    @if (ViewBag.Data.success5)
+                    {
+                        <div class="col-md-2">Url</div>
+                        <div class="col-md-10">
+                            <a href="@ViewBag.Data.url5" target="_blank">@ViewBag.Data.url5</a>
+                        </div>
+                    }
+                    <div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request5</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response5</textarea>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend><a id="btnGetBet">Download Bets</a></legend>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-12">
+                        <input type="submit" name="btnGetBet" class="btn btn-primary" value="Download Bets" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-2">Status</div>
+                    <div class="col-md-10">
+                        <span>@ViewBag.Data.success6</span>
+                    </div>
+                    @*<div class="col-md-12">Request</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.request6</textarea>
+                    </div>
+                    <div class="col-md-12">Response</div>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="5" style="max-width:100% !important;">@ViewBag.Data.response6</textarea>
+                    </div>*@
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var anchor = document.getElementById('@Html.Raw(ViewBag.Data.anchor)');
+        anchor.scrollIntoView(true);
+    });
+</script>

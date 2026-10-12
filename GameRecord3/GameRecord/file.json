@@ -1,0 +1,976 @@
+﻿{
+	"uuid": "ce589a84-4b1d-4393-aaab-027e1bd1257b",
+	"timestamp": "2021-03-22T16:31:15Z",
+	"data": [
+		{
+			"date": "2021-03-22",
+			"games": [
+				{
+					"settledAt": "2021-03-22T14:49:48.554Z",
+					"payout": "0.97500",
+					"dealer": {
+						"uid": "tts0r3u_________",
+						"name": "ROB_138"
+					},
+					"result": {
+						"banker": {
+							"score": 7,
+							"cards": [
+								"AS",
+								"6H"
+							]
+						},
+						"player": {
+							"score": 6,
+							"cards": [
+								"7D",
+								"9C"
+							]
+						},
+						"outcome": "Banker"
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "BAC_Banker",
+									"stake": 0.5,
+									"payout": 0.975,
+									"placedOn": "2021-03-22T14:49:46.875Z",
+									"description": "Banker",
+									"transactionId": "613663230629463488"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1977a85df082d73538e",
+					"gameType": "baccarat",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:49:40.426Z",
+					"currency": "MYR",
+					"wager": "0.50000",
+					"table": {
+						"id": "3m4lzorhcse0jy2u",
+						"name": "Baccarat DNT release QA"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:49:36.407Z",
+					"payout": "0.97500",
+					"dealer": {
+						"uid": "tts0r3u_________",
+						"name": "ROB_138"
+					},
+					"result": {
+						"banker": {
+							"score": 6,
+							"cards": [
+								"AH",
+								"5C"
+							]
+						},
+						"player": {
+							"score": 4,
+							"cards": [
+								"8H",
+								"6C",
+								"TH"
+							]
+						},
+						"outcome": "Banker"
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "BAC_Banker",
+									"stake": 0.5,
+									"payout": 0.975,
+									"placedOn": "2021-03-22T14:49:34.243Z",
+									"description": "Banker",
+									"transactionId": "613663230629462488"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb194182b5f40cd062808",
+					"gameType": "baccarat",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:49:25.891Z",
+					"currency": "MYR",
+					"wager": "0.50000",
+					"table": {
+						"id": "3m4lzorhcse0jy2u",
+						"name": "Baccarat DNT release QA"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:49:59.431Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0r3u_________",
+						"name": "ROB_138"
+					},
+					"result": {
+						"banker": {
+							"score": 6,
+							"cards": [
+								"2D",
+								"4S"
+							]
+						},
+						"player": {
+							"score": 8,
+							"cards": [
+								"3D",
+								"5D"
+							]
+						},
+						"outcome": "Player"
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "BAC_Banker",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:49:57.444Z",
+									"description": "Banker",
+									"transactionId": "613663230629464488"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb19a4ed6ad11b593594d",
+					"gameType": "baccarat",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:49:52.578Z",
+					"currency": "MYR",
+					"wager": "0.50000",
+					"table": {
+						"id": "3m4lzorhcse0jy2u",
+						"name": "Baccarat DNT release QA"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:49:21.869Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0r3u_________",
+						"name": "ROB_138"
+					},
+					"result": {
+						"banker": {
+							"score": 2,
+							"cards": [
+								"2C",
+								"QH",
+								"KC"
+							]
+						},
+						"player": {
+							"score": 6,
+							"cards": [
+								"6H",
+								"JC"
+							]
+						},
+						"outcome": "Player"
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "BAC_Banker",
+									"stake": 1,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:49:19.689Z",
+									"description": "Banker",
+									"transactionId": "613663230629461488"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1908b145238d94e7e6d",
+					"gameType": "baccarat",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:49:10.639Z",
+					"currency": "MYR",
+					"wager": "1.00000",
+					"table": {
+						"id": "3m4lzorhcse0jy2u",
+						"name": "Baccarat DNT release QA"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:56:30.349Z",
+					"payout": "1.50000",
+					"dealer": {
+						"uid": "tts0r85_________",
+						"name": "ROB_293"
+					},
+					"result": {
+						"dealer": {
+							"cards": [
+								"TH",
+								"TD",
+								"KH",
+								"QS",
+								"8C"
+							],
+							"rank": 4263,
+							"type": "OnePair",
+							"qualified": true
+						},
+						"player": {
+							"cards": [
+								"TC",
+								"TH",
+								"TD",
+								"AC",
+								"KH"
+							],
+							"rank": 1874,
+							"type": "ThreeOfAKind"
+						},
+						"outcome": "Player",
+						"cards": {
+							"dealer": [
+								"8C",
+								"QS"
+							],
+							"player": [
+								"TC",
+								"AC"
+							],
+							"river": [
+								"TH",
+								"TD"
+							],
+							"flop": [
+								"7S",
+								"3D",
+								"KH"
+							]
+						},
+						"bonus": {
+							"holdemBonus": {
+								"handType": "FullHandBonusOutcome",
+								"cards": [
+									"AC",
+									"KH",
+									"TC",
+									"7S",
+									"3D"
+								],
+								"type": "HighCard"
+							}
+						},
+						"jackpotOutcome": {
+							"cards": [
+								"TC",
+								"TH",
+								"TD",
+								"AC",
+								"KH",
+								"7S",
+								"3D"
+							],
+							"type": "None"
+						}
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "HLDM_AnteBet",
+									"stake": 0.25,
+									"payout": 0.5,
+									"placedOn": "2021-03-22T14:56:20.547Z",
+									"description": "Ante Bet",
+									"transactionId": "616170947535787292"
+								},
+								{
+									"code": "HLDM_CallBet",
+									"stake": 0.5,
+									"payout": 1,
+									"placedOn": "2021-03-22T14:56:29.069Z",
+									"description": "Call Bet",
+									"transactionId": "616170947535788292"
+								}
+							],
+							"configOverlays": [
+								"mrsoxr5o6unqae4x"
+							],
+							"playMode": "RealMoney",
+							"decisions": [
+								{
+									"type": "Call"
+								}
+							],
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1f151738da687a0596d",
+					"gameType": "holdem",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:56:06.284Z",
+					"currency": "MYR",
+					"wager": "0.75000",
+					"table": {
+						"id": "HoldemTable00001",
+						"name": "Casino Hold'em"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:55:56.260Z",
+					"payout": "1.50000",
+					"dealer": {
+						"uid": "tts0r85_________",
+						"name": "ROB_293"
+					},
+					"result": {
+						"dealer": {
+							"cards": [
+								"TD",
+								"TH",
+								"7D",
+								"7C",
+								"KH"
+							],
+							"rank": 2953,
+							"type": "TwoPairs",
+							"qualified": true
+						},
+						"player": {
+							"cards": [
+								"KS",
+								"KH",
+								"7D",
+								"7C",
+								"QH"
+							],
+							"rank": 2656,
+							"type": "TwoPairs"
+						},
+						"outcome": "Player",
+						"cards": {
+							"dealer": [
+								"3H",
+								"TD"
+							],
+							"player": [
+								"KS",
+								"5H"
+							],
+							"river": [
+								"7C",
+								"TH"
+							],
+							"flop": [
+								"QH",
+								"KH",
+								"7D"
+							]
+						},
+						"bonus": {
+							"holdemBonus": {
+								"handType": "FullHandBonusOutcome",
+								"cards": [
+									"KS",
+									"KH",
+									"QH",
+									"7D",
+									"5H"
+								],
+								"type": "OnePair"
+							}
+						},
+						"jackpotOutcome": {
+							"cards": [
+								"KS",
+								"KH",
+								"7D",
+								"7C",
+								"QH",
+								"TH",
+								"5H"
+							],
+							"type": "None"
+						}
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "HLDM_AABonusBet",
+									"stake": 0.25,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:55:41.523Z",
+									"description": "AA Bonus Bet",
+									"transactionId": "616170947535785292"
+								},
+								{
+									"code": "HLDM_AnteBet",
+									"stake": 0.25,
+									"payout": 0.5,
+									"placedOn": "2021-03-22T14:55:41.523Z",
+									"description": "Ante Bet",
+									"transactionId": "616170947535785292"
+								},
+								{
+									"code": "HLDM_CallBet",
+									"stake": 0.5,
+									"payout": 1,
+									"placedOn": "2021-03-22T14:55:54.959Z",
+									"description": "Call Bet",
+									"transactionId": "616170947535786292"
+								}
+							],
+							"configOverlays": [
+								"mrsoxr5o6unqae4x"
+							],
+							"playMode": "RealMoney",
+							"sideBetAABonus": {
+								"betCode": "HLDM_AABonusBet",
+								"result": "Lose"
+							},
+							"decisions": [
+								{
+									"type": "Call"
+								}
+							],
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1e837dd0a7830133688",
+					"gameType": "holdem",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:55:27.200Z",
+					"currency": "MYR",
+					"wager": "1.00000",
+					"table": {
+						"id": "HoldemTable00001",
+						"name": "Casino Hold'em"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:54:57.612Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0r3d_________",
+						"name": "ROB_121"
+					},
+					"result": {
+						"outcomes": [
+							"05"
+						]
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "MW_One",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:54:37.578Z",
+									"description": "1",
+									"transactionId": "615980997906428913"
+								},
+								{
+									"code": "MW_Ten",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:54:37.578Z",
+									"description": "10",
+									"transactionId": "615980997906428913"
+								},
+								{
+									"code": "MW_Twenty",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:54:37.578Z",
+									"description": "20",
+									"transactionId": "615980997906428913"
+								},
+								{
+									"code": "MW_Two",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:54:37.578Z",
+									"description": "2",
+									"transactionId": "615980997906428913"
+								}
+							],
+							"configOverlays": [
+								"mrsoxr446unqae4k"
+							],
+							"playMode": "RealMoney",
+							"maxPayout": 250000,
+							"maxMultiplier": 20000,
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1d7ffe802d302c50196",
+					"gameType": "moneywheel",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:54:17.542Z",
+					"currency": "MYR",
+					"wager": "2.00000",
+					"table": {
+						"id": "MOWDream00000001",
+						"name": "DNT Dream Catcher"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:52:33.151Z",
+					"payout": "9.00000",
+					"dealer": {
+						"uid": "tts0r1y_________",
+						"name": "ROB_70"
+					},
+					"result": {
+						"outcomes": [
+							{
+								"number": "9",
+								"type": "Odd",
+								"color": "Red"
+							}
+						]
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "ROU_SquareBet141517And18",
+									"stake": 1,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:52:11.700Z",
+									"description": "Square bet: 14, 15, 17, and 18",
+									"transactionId": "616419619603027072"
+								},
+								{
+									"code": "ROU_SquareBet282931And32",
+									"stake": 1,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:52:11.700Z",
+									"description": "Square bet: 28, 29, 31, and 32",
+									"transactionId": "616419619603027072"
+								},
+								{
+									"code": "ROU_SquareBet568And9",
+									"stake": 1,
+									"payout": 9,
+									"placedOn": "2021-03-22T14:52:11.700Z",
+									"description": "Square bet: 5, 6, 8, and 9",
+									"transactionId": "616419619603027072"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"betCoverage": {
+								"simple": 0.32
+							},
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1b67fb035a803823795",
+					"gameType": "roulette",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:51:53.657Z",
+					"currency": "MYR",
+					"wager": "3.00000",
+					"table": {
+						"id": "lkcbrbdckjxajdol",
+						"name": "Speed Roulette"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:51:50.641Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0r1y_________",
+						"name": "ROB_70"
+					},
+					"result": {
+						"outcomes": [
+							{
+								"number": "3",
+								"type": "Odd",
+								"color": "Red"
+							}
+						]
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "ROU_SquareBet252628And29",
+									"stake": 1,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:51:30.711Z",
+									"description": "Square bet: 25, 26, 28, and 29",
+									"transactionId": "616419619603026072"
+								},
+								{
+									"code": "ROU_SquareBet8911And12",
+									"stake": 1,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:51:30.711Z",
+									"description": "Square bet: 8, 9, 11, and 12",
+									"transactionId": "616419619603026072"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"betCoverage": {
+								"simple": 0.22
+							},
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1acf46f2fbce74ab4d1",
+					"gameType": "roulette",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:51:12.666Z",
+					"currency": "MYR",
+					"wager": "2.00000",
+					"table": {
+						"id": "lkcbrbdckjxajdol",
+						"name": "Speed Roulette"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:58:16.128Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0r3n_________",
+						"name": "ROB_131"
+					},
+					"result": {
+						"outcomes": [
+							{
+								"number": "27",
+								"type": "Odd",
+								"color": "Red"
+							}
+						]
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "ROU_SquareBet141517And18",
+									"stake": 5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:57:57.352Z",
+									"description": "Square bet: 14, 15, 17, and 18",
+									"transactionId": "616419878608012688"
+								},
+								{
+									"code": "ROU_SquareBet568And9",
+									"stake": 5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:57:57.352Z",
+									"description": "Square bet: 5, 6, 8, and 9",
+									"transactionId": "616419878608012688"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"betCoverage": {
+								"simple": 0.22
+							},
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb2060cce97373f6b5aa2",
+					"gameType": "roulette",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:57:35.327Z",
+					"currency": "MYR",
+					"wager": "10.00000",
+					"table": {
+						"id": "vctlz20yfnmp1ylr",
+						"name": "Roulette"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:53:17.716Z",
+					"payout": "0.00000",
+					"dealer": {
+						"uid": "tts0rj__________",
+						"name": "ROB_19"
+					},
+					"result": {
+						"aSpot": {
+							"card": "3S",
+							"score": 3
+						},
+						"bSpot": {
+							"card": "5C",
+							"score": 5
+						},
+						"outcome": "B"
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "TC_A",
+									"stake": 5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:53:15.421Z",
+									"description": "A",
+									"transactionId": "616410393997037960"
+								}
+							],
+							"configOverlays": [],
+							"playMode": "RealMoney",
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1c5afb304dc05310aa1",
+					"gameType": "topcard",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:52:58.886Z",
+					"currency": "MYR",
+					"wager": "5.00000",
+					"table": {
+						"id": "TopCard000000001",
+						"name": "Football studio"
+					}
+				},
+				{
+					"settledAt": "2021-03-22T14:57:17.831Z",
+					"payout": "1.50000",
+					"dealer": {
+						"uid": "tts0r68_________",
+						"name": "ROB_224"
+					},
+					"result": {
+						"dealer": {
+							"cards": [
+								"JC",
+								"7D",
+								"2D"
+							],
+							"rank": 2657,
+							"type": "HighCard",
+							"qualified": false
+						},
+						"player": {
+							"cards": [
+								"TC",
+								"9D",
+								"3H"
+							],
+							"rank": 2434,
+							"type": "HighCard"
+						},
+						"outcome": "Player",
+						"cards": {
+							"dealer": [
+								"JC",
+								"7D",
+								"2D"
+							],
+							"player": [
+								"3H",
+								"9D",
+								"TC"
+							],
+							"river": [],
+							"flop": []
+						},
+						"bonus": {
+							"sixCardsBonus": {
+								"handType": "FullHandBonusOutcome",
+								"cards": [
+									"JC",
+									"TC",
+									"9D",
+									"7D",
+									"3H"
+								],
+								"type": "None"
+							},
+							"pairPlusBonus": {
+								"handType": "FullHandBonusOutcome",
+								"cards": [
+									"TC",
+									"9D",
+									"3H"
+								],
+								"type": "None"
+							}
+						}
+					},
+					"participants": [
+						{
+							"playerId": "erictest",
+							"screenName": "eric",
+							"sessionId": "pbhj2ysga4vqac4t166eb171b80f2ae13f135a43",
+							"casinoSessionId": "D1lIIJ9nv0eFyGBcWROAUA==",
+							"currency": "MYR",
+							"bets": [
+								{
+									"code": "TRP_AnteBet",
+									"stake": 0.5,
+									"payout": 1,
+									"placedOn": "2021-03-22T14:57:06.195Z",
+									"description": "Ante Bet",
+									"transactionId": "616170947535789292"
+								},
+								{
+									"code": "TRP_PairOrBetterBet",
+									"stake": 0.5,
+									"payout": 0,
+									"placedOn": "2021-03-22T14:57:06.195Z",
+									"description": "Pair or Better Bet",
+									"transactionId": "616170947535789292"
+								},
+								{
+									"code": "TRP_CallBet",
+									"stake": 0.5,
+									"payout": 0.5,
+									"placedOn": "2021-03-22T14:57:17.068Z",
+									"description": "Call Bet",
+									"transactionId": "616170947535790292"
+								}
+							],
+							"configOverlays": [
+								"mrsoxr3d6unqae3d"
+							],
+							"playMode": "RealMoney",
+							"sideBetPairOrBetter": {
+								"betCode": "TRP_PairOrBetterBet",
+								"result": "Lose"
+							},
+							"decisions": [
+								{
+									"type": "Call"
+								}
+							],
+							"channel": "mobile",
+							"os": "Windows",
+							"device": "Desktop",
+							"casinoId": "ruvp1u73g7geizld"
+						}
+					],
+					"id": "166eb1fb3c6e3119fd62a3c8",
+					"gameType": "trp",
+					"status": "Resolved",
+					"startedAt": "2021-03-22T14:56:48.881Z",
+					"currency": "MYR",
+					"wager": "1.50000",
+					"table": {
+						"id": "lbefd4btku2qacll",
+						"name": "Triple Card Poker"
+					}
+				}
+			]
+		}
+	]
+}
